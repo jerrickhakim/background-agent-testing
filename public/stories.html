@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Customer Stories - TechShop">
+  <title>Stories - TechShop</title>
+
+  <title>Stories - TechShop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <h1>TechShop</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/stories" class="active">Stories</a></li>
+        <li><a href="/faqs">FAQs</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="cart-icon">
+        <span>🛒</span>
+        <span class="cart-count">0</span>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero stories-hero">
+    <div class="hero-content">
+      <h2>Customer Stories</h2>
+      <p>Discover how TechShop products changed our customers' lives</p>
+    </div>
+  </section>
+
+  <section class="stories-section">
+    <div class="container">
+      <h2>Real Stories from Real Customers</h2>
+      <div class="stories-grid" id="stories-grid">
+        <!-- Stories will be loaded here -->
+      </div>
+    </div>
+  </section>
+
+  <section class="share-story">
+    <div class="container">
+      <h2>Share Your Story</h2>
+      <p>We'd love to hear how TechShop products have helped you!</p>
+      <form id="story-form" class="story-form">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="story-text" placeholder="Tell us your story..." required></textarea>
+        <button type="submit" class="btn btn-primary">Submit Your Story</button>
+      </form>
+      <div id="form-message"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 TechShop. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="stories.js"></script>
+</body>
+</html>
