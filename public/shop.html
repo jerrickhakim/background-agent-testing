@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop - TechShop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <h1>TechShop</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop" class="active">Shop</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+      <div class="cart-icon">
+        <span>🛒</span>
+        <span class="cart-count">0</span>
+      </div>
+    </div>
+  </nav>
+
+  <section class="shop-header">
+    <div class="container">
+      <h1>Our Shop</h1>
+      <p>Browse our wide selection of tech products</p>
+    </div>
+  </section>
+
+  <div class="shop-container">
+    <aside class="sidebar">
+      <div class="filter-section">
+        <h3>Categories</h3>
+        <div class="filter-group">
+          <label>
+            <input type="checkbox" name="category" value="all" checked>
+            All Categories
+          </label>
+          <label>
+            <input type="checkbox" name="category" value="electronics">
+            Electronics
+          </label>
+          <label>
+            <input type="checkbox" name="category" value="accessories">
+            Accessories
+          </label>
+        </div>
+      </div>
+
+      <div class="filter-section">
+        <h3>Price Range</h3>
+        <div class="price-filter">
+          <input type="range" id="price-range" min="0" max="100" value="100">
+          <p>Max Price: $<span id="price-value">100</span></p>
+        </div>
+      </div>
+
+      <div class="filter-section">
+        <h3>Sorting</h3>
+        <select id="sort-select">
+          <option value="featured">Featured</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="rating">Rating</option>
+        </select>
+      </div>
+    </aside>
+
+    <main class="shop-main">
+      <div class="products-grid" id="products-grid">
+        <!-- Products will be loaded here -->
+      </div>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 TechShop. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="shop.js"></script>
+</body>
+</html>
