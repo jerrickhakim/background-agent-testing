@@ -11,9 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Fetch and display featured products
+// Fetch and display featured products
 async function loadFeaturedProducts() {
   try {
     const response = await fetch('/api/products');
+    if (!response.ok) throw new Error('Failed to fetch products');
     const allProducts = await response.json();
     
     // Display first 4 products as featured
@@ -25,7 +27,10 @@ async function loadFeaturedProducts() {
     });
   } catch (error) {
     console.error('Error loading featured products:', error);
+    featuredProducts.innerHTML = '<p>Failed to load featured products. Please try again later.</p>';
   }
+}
+
 }
 
 // Create a product card element
@@ -49,26 +54,30 @@ function createProductCard(product) {
       </div>
     </div>
   `;
-
-  return card;
+// Add product to cart
+async function addToCart(productId) {
+  try {
+    const response = await fetch('/api/products');
+    const allProducts = await response.json();
+    const product = allProducts.find(p => p.id === productId);
+    
+    if (product) {
+      const existingItem = cart.find(item => item.id === productId);
+      if (existingItem) {
+        existingItem.quantity++;
+      } else {
+        cart.push({ ...product, quantity: 1 });
+      }
+      saveCart();
+      updateCartCount();
+      showNotification(`${product.name} added to cart!`);
+    }
+  } catch (error) {
+    console.error('Error adding to cart:', error);
+    showNotification('Failed to add product to cart');
+  }
 }
 
-// Add product to cart
-function addToCart(productId) {
-  const allProducts = Array.from(featuredProducts.querySelectorAll('.product-card'))
-    .map((_, index) => ({
-      id: productId,
-      name: _.querySelector('.product-name').textContent,
-      price: parseFloat(_.querySelector('.product-price').textContent.replace('$', ''))
-    }));
-
-  const product = allProducts.find(p => p.id === productId);
-  
-  if (product) {
-    const existingItem = cart.find(item => item.id === productId);
-    if (existingItem) {
-      existingItem.quantity++;
-    } else {
       cart.push({ ...product, quantity: 1 });
     }
     saveCart();
