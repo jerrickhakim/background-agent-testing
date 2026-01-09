@@ -201,6 +201,102 @@
             color: #fbbf24;
         }
 
+        /* Testimonial Section */
+        .testimonials {
+            padding: 5rem 2rem;
+            background-color: #f7fafc;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .testimonials-header h2 {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .testimonials-header p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .testimonial-stars {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.2rem;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            color: #2d3748;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            flex-grow: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .testimonial-info h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-info p {
+            font-size: 0.9rem;
+            color: #718096;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             nav {
@@ -236,9 +332,26 @@
             .btn-outline {
                 width: 100%;
             }
-
             .trust-logos {
                 gap: 1rem;
+            }
+
+            .testimonials {
+                padding: 3rem 1rem;
+            }
+
+            .testimonials-header h2 {
+                font-size: 1.75rem;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-card {
+                padding: 1.5rem;
+            }
+        }
             }
         }
     </style>
@@ -283,6 +396,108 @@
                     <div class="trust-logo">
                         <span class="star">★★★★★</span>
                         <span>DataVision</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="testimonials-container">
+            <div class="testimonials-header">
+                <h2>Loved by customers worldwide</h2>
+                <p>See what real users have to say about how DataFlow transformed their data analytics.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        "DataFlow completely transformed how we analyze our customer data. What used to take our team weeks now takes hours. The insights we're getting are invaluable."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SK</div>
+                        <div class="testimonial-info">
+                            <h3>Sarah Kim</h3>
+                            <p>CEO, TechCorp</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        "The AI-driven insights from DataFlow helped us identify patterns in our sales data that we never would have found manually. Our revenue increased by 23% within three months."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JM</div>
+                        <div class="testimonial-info">
+                            <h3>James Mitchell</h3>
+                            <p>VP of Sales, InnovateLabs</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        "We've tried other analytics tools, but DataFlow stands out. The interface is intuitive, the support team is responsive, and the results speak for themselves."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RP</div>
+                        <div class="testimonial-info">
+                            <h3>Rachel Park</h3>
+                            <p>Data Director, DataVision</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        "As a startup, we needed a scalable analytics solution. DataFlow grew with us and never let us down. Best investment we made this year."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MC</div>
+                        <div class="testimonial-info">
+                            <h3>Marcus Chen</h3>
+                            <p>Founder, StartupXYZ</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 5 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        "The onboarding was smooth, and our team was productive within days. DataFlow's documentation and customer support are exceptional."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">LP</div>
+                        <div class="testimonial-info">
+                            <h3>Lisa Park</h3>
+                            <p>Analytics Lead, CloudSoft</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 6 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        "DataFlow's predictive analytics capabilities have given us a competitive edge. We now make data-driven decisions faster than ever before."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">DW</div>
+                        <div class="testimonial-info">
+                            <h3>David Wong</h3>
+                            <p>Strategy Manager, Enterprise Corp</p>
+                        </div>
                     </div>
                 </div>
             </div>
