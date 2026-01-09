@@ -13,8 +13,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.get('/shop', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'shop.html'));
+app.get('/faqs', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'faqs.html'));
+});
+
 });
 
 // API endpoint for products
