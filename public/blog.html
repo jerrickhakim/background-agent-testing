@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TechShop Blog - Latest articles and insights about technology">
+  <title>TechShop Blog - Tech Articles & Insights</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <h1>TechShop</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/blog" class="active">Blog</a></li>
+        <li><a href="/faqs">FAQs</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      <div class="cart-icon">
+        <span>🛒</span>
+        <span class="cart-count">0</span>
+      </div>
+    </div>
+  </nav>
+
+  <section class="blog-header">
+    <div class="container">
+      <h1>TechShop Blog</h1>
+      <p>Discover the latest articles, tips, and insights about technology</p>
+    </div>
+  </section>
+
+  <section class="blog-content">
+    <div class="container">
+      <div class="blog-wrapper">
+        <!-- Sidebar -->
+        <aside class="blog-sidebar">
+          <!-- Search -->
+          <div class="sidebar-widget">
+            <h3>Search</h3>
+            <div class="search-box">
+              <input type="text" id="search-input" placeholder="Search articles...">
+              <button id="search-btn" class="btn btn-primary">Search</button>
+            </div>
+          </div>
+
+          <!-- Categories -->
+          <div class="sidebar-widget">
+            <h3>Categories</h3>
+            <ul class="category-list">
+              <li><a href="#" onclick="filterByCategory('all')">All Articles</a></li>
+              <li><a href="#" onclick="filterByCategory('gadgets')">Gadgets</a></li>
+              <li><a href="#" onclick="filterByCategory('software')">Software</a></li>
+              <li><a href="#" onclick="filterByCategory('reviews')">Reviews</a></li>
+              <li><a href="#" onclick="filterByCategory('tips')">Tips & Tricks</a></li>
+            </ul>
+          </div>
+
+          <!-- Recent Posts -->
+          <div class="sidebar-widget">
+            <h3>Recent Posts</h3>
+            <ul class="recent-posts" id="recent-posts">
+              <!-- Recent posts will be loaded here -->
+            </ul>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="blog-main">
+          <!-- Blog Grid -->
+          <div class="blog-grid" id="blog-grid">
+            <!-- Blog posts will be loaded here -->
+          </div>
+
+          <!-- No results message -->
+          <div id="no-results" class="no-results" style="display: none;">
+            <p>No articles found. Try adjusting your search or filters.</p>
+          </div>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 TechShop. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script src="blog.js"></script>
+</body>
+</html>
