@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions - FAQ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .faq-section {
+            margin-bottom: 40px;
+        }
+
+        .faq-section-title {
+            font-size: 1.5em;
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+            padding-left: 20px;
+        }
+
+        .faq-question {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            user-select: none;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: #667eea;
+        }
+
+        .faq-toggle {
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-toggle.active {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            display: none;
+            color: #666;
+            margin-top: 10px;
+            padding: 10px 0;
+            line-height: 1.8;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px 40px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .footer p {
+            margin: 5px 0;
+            font-size: 0.95em;
+        }
+
+        a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .faq-question {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to common questions and get help quickly</p>
+        </div>
+
+        <div class="content">
+            <!-- Getting Started Section -->
+            <div class="faq-section">
+                <h2 class="faq-section-title">Getting Started</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>What is this platform?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        This is a comprehensive platform designed to help users get quick answers to their questions. We provide organized categories and detailed responses to frequently asked questions to improve user experience and reduce support burden.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>How do I get started?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Getting started is simple! Begin by exploring the different sections of our FAQ page. Click on any question to reveal the answer. If you don't find what you're looking for, feel free to contact our support team.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>Is there a cost to use this service?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        We offer both free and premium options. The basic FAQ access is free for all users. Premium features and dedicated support are available through our paid plans. Please check our pricing page for more details.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Account & Security Section -->
+            <div class="faq-section">
+                <h2 class="faq-section-title">Account & Security</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>How do I create an account?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        To create an account, click the "Sign Up" button on the homepage. Enter your email address, create a secure password, and verify your email. You'll have instant access to your account once verified.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>How is my data protected?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        We take data security very seriously. All user data is encrypted using industry-standard SSL/TLS protocols. We comply with GDPR, CCPA, and other international data protection regulations. Your privacy is our top priority.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>Can I change my password?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, you can change your password anytime from your account settings. Go to your profile, click on "Security," and select "Change Password." We recommend changing your password regularly for security purposes.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>What should I do if I forget my password?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Click on "Forgot Password" on the login page. Enter your email address, and we'll send you a password reset link. Check your email and follow the instructions to create a new password. The link expires after 24 hours for security.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features & Functionality Section -->
+            <div class="faq-section">
+                <h2 class="faq-section-title">Features & Functionality</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>What features are included in the free plan?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        The free plan includes access to our full FAQ database, basic search functionality, and community forums. You can ask up to 5 questions per month through our support channel. Upgrade to premium for unlimited access and priority support.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>Can I search for specific topics?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes! Use the search bar at the top of the page to quickly find answers to your questions. Our search is powered by advanced algorithms and will show you the most relevant results. You can also browse by category sections.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>How often is the FAQ updated?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        We update our FAQ regularly based on user feedback and common questions. New questions and answers are added weekly, and existing answers are reviewed and updated monthly to ensure accuracy and relevance.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Support & Contact Section -->
+            <div class="faq-section">
+                <h2 class="faq-section-title">Support & Contact</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>How do I contact support?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        You can contact our support team through multiple channels: email at support@example.com, live chat on our website (available 24/7), or by filling out the contact form. We typically respond within 24 hours.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>What are your support hours?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Live chat support is available 24/7/365. Email support is monitored during business hours (Monday-Friday, 9 AM - 6 PM EST). Premium members receive priority support with faster response times, including weekend coverage.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>Can I request a new feature?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Absolutely! We value user feedback and feature requests. You can submit suggestions through our feedback form on the website, or email our product team at product@example.com. We review all requests and consider them for future updates.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>Where can I report a bug?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        If you encounter a bug, please report it to our development team at bugs@example.com with a detailed description and steps to reproduce. You can also use the bug report form in your account settings. Critical bugs are prioritized and typically fixed within 48 hours.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Billing Section -->
+            <div class="faq-section">
+                <h2 class="faq-section-title">Billing & Payments</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>What payment methods do you accept?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        We accept all major credit cards (Visa, Mastercard, American Express), PayPal, bank transfers, and wire transfers. All payments are processed securely through our PCI-compliant payment gateway.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>Can I cancel my subscription anytime?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, you can cancel your subscription anytime from your account settings. Cancellations take effect at the end of your current billing period. No refunds are issued for partial months, but you'll retain access until your paid period expires.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleAnswer(this)">
+                        <span>Is there a refund policy?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        We offer a 30-day money-back guarantee for new subscriptions. If you're not satisfied, contact our billing team within 30 days of purchase for a full refund. No questions asked. After 30 days, cancellations take effect at the end of your billing cycle.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Did you find what you're looking for? If not, please contact us at support@example.com</p>
+            <p>Last updated: January 9, 2026</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(element) {
+            const question = element;
+            const answer = element.nextElementSibling;
+            const toggle = element.querySelector('.faq-toggle');
+
+            // Close all other answers
+            document.querySelectorAll('.faq-answer.active').forEach(activeAnswer => {
+                if (activeAnswer !== answer) {
+                    activeAnswer.classList.remove('active');
+                    activeAnswer.previousElementSibling.querySelector('.faq-toggle').classList.remove('active');
+                }
+            });
+
+            // Toggle current answer
+            answer.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                if (event.target.classList.contains('faq-question')) {
+                    event.preventDefault();
+                    toggleAnswer(event.target);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
