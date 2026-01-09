@@ -25,6 +25,10 @@ app.get('/shop', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'shop.html'));
 });
 
+app.get('/blog', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'blog.html'));
+});
+
 app.get('/message', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'message.html'));
 });
