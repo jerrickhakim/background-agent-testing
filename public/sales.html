@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Special Sales - Limited time offers on premium tech products">
+  <title>Sales - TechShop</title>
+
+  <title>Sales - TechShop</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .sales-header {
+      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .sales-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .sales-header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 1rem;
+    }
+
+    .countdown {
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      margin-top: 1rem;
+    }
+
+    .countdown-item {
+      display: inline-block;
+      margin: 0 1rem;
+      text-align: center;
+    }
+
+    .countdown-value {
+      font-size: 1.8rem;
+      font-weight: bold;
+      display: block;
+    }
+
+    .countdown-label {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .sales-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .promo-section {
+      margin-bottom: 4rem;
+    }
+
+    .promo-section h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--text-color);
+      text-align: center;
+    }
+
+    .discount-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #ff6b6b;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .product-card {
+      position: relative;
+    }
+
+    .original-price {
+      text-decoration: line-through;
+      color: #9ca3af;
+      font-size: 0.9rem;
+      margin-right: 0.5rem;
+    }
+
+    .sale-savings {
+      color: #10b981;
+      font-weight: bold;
+      font-size: 0.9rem;
+      margin-left: 0.5rem;
+    }
+
+    .flash-sale-banner {
+      background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
+      color: white;
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+      margin-bottom: 3rem;
+      box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+    }
+
+    .flash-sale-banner h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .flash-sale-banner p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+
+    .btn-flash-sale {
+      background-color: white;
+      color: #ff6b6b;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-flash-sale:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .benefits-section {
+      background-color: var(--light-gray);
+      padding: 3rem 2rem;
+      border-radius: 8px;
+      margin-bottom: 3rem;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .benefit-item {
+      text-align: center;
+    }
+
+    .benefit-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .benefit-item h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .benefit-item p {
+      color: #6b7280;
+      font-size: 0.95rem;
+    }
+
+    .featured-deals {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .featured-deal {
+      background: white;
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .featured-deal:hover {
+      border-color: #ff6b6b;
+      box-shadow: 0 10px 30px rgba(255, 107, 107, 0.15);
+      transform: translateY(-5px);
+    }
+
+    .deal-image {
+      width: 100%;
+      height: 300px;
+      background-color: var(--light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      font-size: 3rem;
+    }
+
+    .deal-content {
+      padding: 1.5rem;
+    }
+
+    .deal-category {
+      font-size: 0.85rem;
+      color: #ff6b6b;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .deal-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+
+    .deal-prices {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .deal-price {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #ff6b6b;
+    }
+
+    .deal-discount {
+      background-color: #fecaca;
+      color: #991b1b;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    .deal-stock {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-bottom: 1rem;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background-color: var(--light-gray);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #ff6b6b 0%, #ffa500 100%);
+      border-radius: 4px;
+    }
+
+    .btn-deal {
+      width: 100%;
+      padding: 10px;
+      background-color: #ff6b6b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-deal:hover {
+      background-color: #ee5a6f;
+      transform: translateY(-2px);
+    }
+
+    .testimonials-section {
+      background-color: var(--light-gray);
+      padding: 3rem 2rem;
+      border-radius: 8px;
+      margin-bottom: 3rem;
+    }
+
+    .testimonials-section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .testimonial {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid #ff6b6b;
+    }
+
+    .stars {
+      color: #ffa500;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-text {
+      color: var(--text-color);
+      margin-bottom: 1rem;
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--text-color);
+      margin-bottom: 0.25rem;
+    }
+
+    .testimonial-role {
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    @media (max-width: 768px) {
+      .sales-header h1 {
+        font-size: 1.8rem;
+      }
+
+      .countdown {
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+      }
+
+      .countdown-item {
+        margin: 0 0.5rem;
+      }
+
+      .countdown-value {
+        font-size: 1.3rem;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-deals {
+        grid-template-columns: 1fr;
+      }
+
+      .flash-sale-banner h3 {
+        font-size: 1.4rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sales-header {
+        padding: 40px 15px;
+      }
+
+      .sales-header h1 {
+        font-size: 1.5rem;
+      }
+
+      .sales-header p {
+        font-size: 0.95rem;
+      }
+
+      .countdown {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+      }
+
+      .countdown-item {
+        margin: 0;
+      }
+
+      .countdown-value {
+        font-size: 1rem;
+      }
+
+      .countdown-label {
+        font-size: 0.7rem;
+      }
+
+      .deal-image {
+        height: 200px;
+        font-size: 2rem;
+      }
+
+      .sales-container {
+        padding: 30px 15px;
+      }
+
+      .promo-section h2 {
+        font-size: 1.5rem;
+      }
+
+      .flash-sale-banner h3 {
+        font-size: 1.2rem;
+      }
+
+      .flash-sale-banner p {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <h1>TechShop</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/sales" class="active">Sales</a></li>
+        <li><a href="/faqs">FAQs</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+      <div class="cart-icon">
+        <span>🛒</span>
+        <span class="cart-count">0</span>
+      </div>
+    </div>
+  </nav>
+
+  <section class="sales-header">
+    <div class="container">
+      <h1>🎉 MEGA SALE EVENT</h1>
+      <p>Limited Time Offers - Save Up to 70% on Premium Tech Products</p>
+      <div class="countdown">
+        <div class="countdown-item">
+          <span class="countdown-value" id="days">03</span>
+          <span class="countdown-label">Days</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-value" id="hours">12</span>
+          <span class="countdown-label">Hours</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-value" id="minutes">45</span>
+          <span class="countdown-label">Minutes</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-value" id="seconds">30</span>
+          <span class="countdown-label">Seconds</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sales-container">
+    <div class="flash-sale-banner">
+      <h3>⚡ FLASH SALE - Today Only!</h3>
+      <p>Extra 20% off all wireless devices with code: FLASH20</p>
+      <button class="btn-flash-sale">Shop Flash Sale</button>
+    </div>
+
+    <section class="promo-section">
+      <h2>Featured Deals</h2>
+      <div class="featured-deals" id="featured-deals">
+        <!-- Deal cards will be generated here -->
+        <div class="featured-deal">
+          <div class="deal-image">📱</div>
+          <div class="discount-badge">-45%</div>
+          <div class="deal-content">
+            <div class="deal-category">Hot Deal</div>
+            <div class="deal-title">Premium Wireless Earbuds</div>
+            <div class="deal-prices">
+              <span class="deal-price">$49.99</span>
+              <span class="original-price">$89.99</span>
+              <span class="deal-discount">Save $40</span>
+            </div>
+            <div class="deal-stock">Only 12 left in stock!</div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 75%;"></div>
+            </div>
+            <button class="btn-deal">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="featured-deal">
+          <div class="deal-image">💻</div>
+          <div class="discount-badge">-35%</div>
+          <div class="deal-content">
+            <div class="deal-category">Best Seller</div>
+            <div class="deal-title">USB-C Hub (7-in-1)</div>
+            <div class="deal-prices">
+              <span class="deal-price">$29.99</span>
+              <span class="original-price">$45.99</span>
+              <span class="deal-discount">Save $16</span>
+            </div>
+            <div class="deal-stock">85 in stock</div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 40%;"></div>
+            </div>
+            <button class="btn-deal">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="featured-deal">
+          <div class="deal-image">⌚</div>
+          <div class="discount-badge">-50%</div>
+          <div class="deal-content">
+            <div class="deal-category">Limited Offer</div>
+            <div class="deal-title">Smart Watch Pro</div>
+            <div class="deal-prices">
+              <span class="deal-price">$99.99</span>
+              <span class="original-price">$199.99</span>
+              <span class="deal-discount">Save $100</span>
+            </div>
+            <div class="deal-stock">Only 5 left in stock!</div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 95%;"></div>
+            </div>
+            <button class="btn-deal">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="featured-deal">
+          <div class="deal-image">🎧</div>
+          <div class="discount-badge">-40%</div>
+          <div class="deal-content">
+            <div class="deal-category">Staff Pick</div>
+            <div class="deal-title">Noise-Canceling Headphones</div>
+            <div class="deal-prices">
+              <span class="deal-price">$79.99</span>
+              <span class="original-price">$129.99</span>
+              <span class="deal-discount">Save $50</span>
+            </div>
+            <div class="deal-stock">28 in stock</div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 55%;"></div>
+            </div>
+            <button class="btn-deal">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="featured-deal">
+          <div class="deal-image">🔋</div>
+          <div class="discount-badge">-60%</div>
+          <div class="deal-content">
+            <div class="deal-category">Clearance</div>
+            <div class="deal-title">Portable Power Bank 20K</div>
+            <div class="deal-prices">
+              <span class="deal-price">$19.99</span>
+              <span class="original-price">$49.99</span>
+              <span class="deal-discount">Save $30</span>
+            </div>
+            <div class="deal-stock">Only 3 left in stock!</div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 98%;"></div>
+            </div>
+            <button class="btn-deal">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="featured-deal">
+          <div class="deal-image">🖱️</div>
+          <div class="discount-badge">-30%</div>
+          <div class="deal-content">
+            <div class="deal-category">Bundle Offer</div>
+            <div class="deal-title">Wireless Mouse & Keyboard</div>
+            <div class="deal-prices">
+              <span class="deal-price">$34.99</span>
+              <span class="original-price">$49.99</span>
+              <span class="deal-discount">Save $15</span>
+            </div>
+            <div class="deal-stock">42 in stock</div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 30%;"></div>
+            </div>
+            <button class="btn-deal">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits-section">
+      <h2>Why Shop Our Sales?</h2>
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <div class="benefit-icon">✓</div>
+          <h4>Guaranteed Lowest Prices</h4>
+          <p>Price match guarantee on all sale items during promotion period</p>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">🚚</div>
+          <h4>Free Shipping</h4>
+          <p>Free shipping on orders over $50 during the sale</p>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">↩️</div>
+          <h4>Easy Returns</h4>
+          <p>30-day hassle-free return policy on all purchase</p>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">🔒</div>
+          <h4>Secure Checkout</h4>
+          <p>100% secure payment processing with SSL encryption</p>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">💳</div>
+          <h4>Flexible Payment</h4>
+          <p>Pay in 4 installments with zero interest</p>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">📞</div>
+          <h4>24/7 Support</h4>
+          <p>Dedicated customer support available round the clock</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials-section">
+      <h2>Customer Reviews</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Amazing deals! I saved over $100 on my purchase. The quality is excellent and shipping was fast. Highly recommended!"</p>
+          <div class="testimonial-author">Sarah Johnson</div>
+          <div class="testimonial-role">Verified Buyer</div>
+        </div>
+
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"The sales event was incredible. Found exactly what I needed at half the price. Customer service was also very helpful."</p>
+          <div class="testimonial-author">Michael Chen</div>
+          <div class="testimonial-role">Verified Buyer</div>
+        </div>
+
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Best shopping experience! The website is easy to navigate and the deals are genuine. Will definitely shop here again."</p>
+          <div class="testimonial-author">Emily Rodriguez</div>
+          <div class="testimonial-role">Verified Buyer</div>
+        </div>
+
+        <div class="testimonial">
+          <div class="stars">★★★★☆</div>
+          <p class="testimonial-text">"Great selection and prices. Only wish there was more stock on some items. Otherwise, very satisfied with my purchase."</p>
+          <div class="testimonial-author">David Park</div>
+          <div class="testimonial-role">Verified Buyer</div>
+        </div>
+
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"The countdown timer creates urgency but in a good way. Made me decide quickly and I got the product I wanted!"</p>
+          <div class="testimonial-author">Lisa Thompson</div>
+          <div class="testimonial-role">Verified Buyer</div>
+        </div>
+
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Exceeded my expectations. The quality of products and the sale prices are unbeatable. Five stars!"</p>
+          <div class="testimonial-author">James Wilson</div>
+          <div class="testimonial-role">Verified Buyer</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 TechShop. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Countdown timer
+    function updateCountdown() {
+      const now = new Date();
+      const saleEnd = new Date(now.getTime() + (3 * 24 * 60 * 60 * 1000)); // 3 days from now
+      
+      const interval = setInterval(() => {
+        const current = new Date();
+        const timeRemaining = saleEnd - current;
+        
+        if (timeRemaining <= 0) {
+          clearInterval(interval);
+          return;
+        }
+        
+        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+        
+        document.getElementById('days').textContent = String(days).padStart(2, '0');
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+      }, 1000);
+    }
+
+    // Initialize countdown
+    updateCountdown();
+
+    // Cart functionality
+    const cartCountElement = document.querySelector('.cart-count');
+    let cartCount = parseInt(localStorage.getItem('cartCount') || '0');
+    cartCountElement.textContent = cartCount;
+
+    document.querySelectorAll('.btn-deal').forEach(button => {
+      button.addEventListener('click', function() {
+        cartCount++;
+        localStorage.setItem('cartCount', cartCount);
+        cartCountElement.textContent = cartCount;
+        
+        // Show feedback
+        const originalText = this.textContent;
+        this.textContent = '✓ Added!';
+        this.style.backgroundColor = '#10b981';
+        
+        setTimeout(() => {
+          this.textContent = originalText;
+          this.style.backgroundColor = '';
+        }, 2000);
+      });
+    });
+
+    document.querySelector('.btn-flash-sale').addEventListener('click', function() {
+      alert('Flash sale items have been added to your cart!');
+    });
+  </script>
+</body>
+</html>
