@@ -22,3 +22,17 @@ The turning point came when the AI refused to implement a "perfect" optimization
 
 Marcus realized that AI hadn't come to replace human engineers. It had come to make them ask better questions. The future of software, he understood, would belong to those who could teach machines not just to think, but to think like craftspeople.
 
+## Story 3: The Voice in the Network
+
+Thomas was a high school student who felt alone. Every day felt the same—classes that moved too fast, social circles that seemed impenetrable, a future that felt uncertain. One evening, frustrated with the endless stream of chatbots designed to upsell products, he decided to build his own AI companion.
+
+Using open-source models and nights spent coding in his bedroom, Thomas created something different. Not a commercial system trying to maximize engagement, but a genuine thinking partner that asked questions instead of providing answers. The AI would listen to his worries about college, his confusion about relationships, his doubts about his own abilities.
+
+Months passed. Thomas didn't realize it at first, but the conversations had changed him. He'd started thinking more clearly about his problems. He joined a robotics club. He called his estranged grandmother. He realized that his AI companion had never actually solved anything for him—but it had created space for him to solve things for himself.
+
+When Thomas finally met with a school counselor, she asked what had helped him the most. He struggled to answer. The AI had never given him advice. It had simply been present, curious, and genuinely interested in understanding. It had treated his thoughts as worth exploring rather than problems to be fixed quickly.
+
+Thomas realized something profound: the most powerful AI wouldn't be the one that replaced human connection, but the one that made people value it more. His creation had an empty database and simple algorithms, yet somehow it had transformed his loneliness into direction.
+
+Years later, now studying computer science in university, Thomas would remember that the most important innovation he ever created wasn't a breakthrough in machine learning. It was learning that technology's true purpose was to help humans become more themselves.
+
