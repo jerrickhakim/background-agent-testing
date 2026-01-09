@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TechShop Blog - Latest tech news, tips, and product reviews">
+  <title>Blog - TechShop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <h1>TechShop</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/blog" class="active">Blog</a></li>
+        <li><a href="/faqs">FAQs</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      <div class="cart-icon">
+        <span>🛒</span>
+        <span class="cart-count">0</span>
+      </div>
+    </div>
+  </nav>
+
+  <section class="blog-header">
+    <div class="container">
+      <h1>TechShop Blog</h1>
+      <p>Stay updated with the latest tech news, tips, and product reviews</p>
+    </div>
+  </section>
+
+  <div class="blog-container">
+    <aside class="blog-sidebar">
+      <div class="sidebar-section">
+        <h3>Search</h3>
+        <input 
+          type="text" 
+          id="search-input" 
+          class="search-box" 
+          placeholder="Search articles..."
+        >
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Categories</h3>
+        <div class="category-list">
+          <button class="category-filter active" data-category="all">All</button>
+          <button class="category-filter" data-category="news">News</button>
+          <button class="category-filter" data-category="tutorial">Tutorials</button>
+          <button class="category-filter" data-category="review">Reviews</button>
+          <button class="category-filter" data-category="tips">Tips & Tricks</button>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Recent Posts</h3>
+        <div class="recent-posts" id="recent-posts">
+          <!-- Recent posts will be loaded here -->
+        </div>
+      </div>
+    </aside>
+
+    <main class="blog-main">
+      <div class="blog-grid" id="blog-grid">
+        <!-- Blog posts will be loaded here -->
+      </div>
+    </main>
+  </div>
+
+  <div id="blog-modal" class="blog-modal" style="display: none;">
+    <div class="blog-modal-content">
+      <span class="blog-modal-close">&times;</span>
+      <article class="blog-post-detail" id="blog-post-detail">
+        <!-- Post details will be loaded here -->
+      </article>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 TechShop. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script src="blog.js"></script>
+</body>
+</html>
