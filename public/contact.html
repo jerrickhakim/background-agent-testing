@@ -130,6 +130,13 @@
             </div>
 
             <button type="submit" class="btn btn-primary form-submit-btn">Send Message</button>
+            <div class="form-success-box" id="successBox" style="display: none;">
+              <span class="success-icon">✓</span>
+              <div class="success-content">
+                <p class="success-title">Message Sent Successfully!</p>
+                <p class="success-message">Thank you for contacting TechShop. We'll get back to you as soon as possible.</p>
+              </div>
+            </div>
             <span class="form-message" id="formMessage"></span>
           </form>
         </div>
@@ -140,9 +147,6 @@
   <footer class="footer">
     <div class="container">
       <p>&copy; 2026 TechShop. All rights reserved.</p>
-    </div>
-  </footer>
-
   <script src="app.js"></script>
   <script>
     function handleSubmit(event) {
@@ -151,6 +155,7 @@
       // Reset error messages
       document.querySelectorAll('.error-message').forEach(msg => msg.textContent = '');
       document.getElementById('formMessage').textContent = '';
+      document.getElementById('successBox').style.display = 'none';
       
       const form = document.getElementById('contactForm');
       const formData = new FormData(form);
@@ -194,16 +199,30 @@
         return;
       }
       
-      // Show success message and reset form
-      const formMessage = document.getElementById('formMessage');
-      formMessage.textContent = 'Message sent successfully! We\'ll get back to you soon.';
-      formMessage.style.color = 'var(--success-color)';
+      // Store message in localStorage
+      const userMessage = {
+        name: name,
+        email: email,
+        phone: phone,
+        subject: subject,
+        message: message,
+        subscribe: formData.get('subscribe') ? true : false,
+        timestamp: new Date().toISOString()
+      };
       
-      // Reset form after 2 seconds
+      const messages = JSON.parse(localStorage.getItem('userMessages')) || [];
+      messages.unshift(userMessage);
+      localStorage.setItem('userMessages', JSON.stringify(messages));
+      
+      // Show success message with nice styling
+      const successBox = document.getElementById('successBox');
+      successBox.style.display = 'flex';
+      
+      // Reset form after 3 seconds
       setTimeout(() => {
         form.reset();
-        formMessage.textContent = '';
-      }, 2000);
+        successBox.style.display = 'none';
+      }, 3000);
     }
 
     // Update cart count on page load
