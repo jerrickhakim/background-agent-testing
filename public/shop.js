@@ -19,8 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Fetch products from API
 async function loadProducts() {
-// Fetch products from API
-async function loadProducts() {
   try {
     const response = await fetch('/api/products');
     if (!response.ok) throw new Error('Failed to fetch products');
@@ -32,7 +30,6 @@ async function loadProducts() {
     productsGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 3rem;">Failed to load products. Please try again later.</p>';
   }
 }
-
 
 // Render products to the grid
 function renderProducts() {
@@ -115,14 +112,11 @@ function applyFilters() {
     case 'rating':
       filteredProducts.sort((a, b) => b.rating - a.rating);
       break;
-// Add product to wishlist
-function addToWishlist(productId) {
-  const product = allProducts.find(p => p.id === productId);
-  if (product) {
-    showNotification(`${product.name} added to wishlist!`);
+    default:
+      break;
   }
-}
 
+  renderProducts();
 }
 
 // Add product to cart
