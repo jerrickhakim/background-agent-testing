@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Messages - TechShop - View and manage your conversations with our support team">
+  <title>Messages - TechShop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <h1>TechShop</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/faqs">FAQs</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/message" class="active">Messages</a></li>
+      </ul>
+      <div class="cart-icon">
+        <span>🛒</span>
+        <span class="cart-count">0</span>
+      </div>
+    </div>
+  </nav>
+
+  <section class="message-header">
+    <div class="container">
+      <h1>Your Messages</h1>
+      <p>View and manage your conversations with our support team</p>
+    </div>
+  </section>
+
+  <section class="message-content">
+    <div class="container">
+      <div class="message-wrapper">
+        <div class="message-list-container">
+          <h2>Conversations</h2>
+          <div class="message-list" id="messageList">
+            <!-- Messages will be loaded here -->
+            <div class="empty-message">
+              <p>No messages yet</p>
+              <a href="/contact" class="btn btn-secondary">Send a Message</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="message-detail-container">
+          <div class="message-detail" id="messageDetail">
+            <div class="empty-detail">
+              <p>Select a message to view</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 TechShop. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    // Load messages on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      loadMessages();
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartCount = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+      document.querySelector('.cart-count').textContent = cartCount;
+    });
+
+    function loadMessages() {
+      const messages = JSON.parse(localStorage.getItem('userMessages')) || [];
+      const messageList = document.getElementById('messageList');
+      
+      if (messages.length === 0) {
+        messageList.innerHTML = `
+          <div class="empty-message">
+            <p>No messages yet</p>
+            <a href="/contact" class="btn btn-secondary">Send a Message</a>
+          </div>
+        `;
+        return;
+      }
+
+      messageList.innerHTML = '';
+      messages.forEach((msg, index) => {
+        const msgItem = document.createElement('div');
+        msgItem.className = 'message-item';
+        if (index === 0) msgItem.classList.add('active');
+        
+        const date = new Date(msg.timestamp).toLocaleDateString();
+        msgItem.innerHTML = `
+          <div class="message-item-header">
+            <h4>${msg.subject}</h4>
+            <span class="message-date">${date}</span>
+          </div>
+          <p class="message-preview">${msg.name}</p>
+        `;
+        
+        msgItem.addEventListener('click', () => showMessageDetail(msg, index));
+        messageList.appendChild(msgItem);
+      });
+
+      // Show first message by default
+      if (messages.length > 0) {
+        showMessageDetail(messages[0], 0);
+      }
+    }
+
+    function showMessageDetail(msg, index) {
+      const messageDetail = document.getElementById('messageDetail');
+      const date = new Date(msg.timestamp).toLocaleDateString();
+      const time = new Date(msg.timestamp).toLocaleTimeString();
+      
+      messageDetail.innerHTML = `
+        <div class="message-detail-header">
+          <h2>${msg.subject}</h2>
+          <p class="detail-date">${date} at ${time}</p>
+        </div>
+        <div class="message-detail-info">
+          <div class="detail-row">
+            <label>From:</label>
+            <span>${msg.name}</span>
+          </div>
+          <div class="detail-row">
+            <label>Email:</label>
+            <span><a href="mailto:${msg.email}">${msg.email}</a></span>
+          </div>
+          ${msg.phone ? `
+            <div class="detail-row">
+              <label>Phone:</label>
+              <span><a href="tel:${msg.phone}">${msg.phone}</a></span>
+            </div>
+          ` : ''}
+          <div class="detail-row">
+            <label>Category:</label>
+            <span class="category-badge">${formatCategory(msg.subject)}</span>
+          </div>
+        </div>
+        <div class="message-detail-body">
+          <h3>Message</h3>
+          <p>${msg.message}</p>
+        </div>
+        <div class="message-actions">
+          <button class="btn btn-secondary" onclick="replyToMessage(${index})">Reply</button>
+          <button class="btn btn-secondary" onclick="deleteMessage(${index})">Delete</button>
+        </div>
+      `;
+
+      // Update active state
+      document.querySelectorAll('.message-item').forEach((item, i) => {
+        item.classList.toggle('active', i === index);
+      });
+    }
+
+    function formatCategory(subject) {
+      const categoryMap = {
+        'general': 'General Inquiry',
+        'support': 'Customer Support',
+        'order': 'Order Related',
+        'returns': 'Returns & Refunds',
+        'shipping': 'Shipping',
+        'feedback': 'Feedback',
+        'other': 'Other'
+      };
+      return categoryMap[subject] || subject;
+    }
+
+    function replyToMessage(index) {
+      const messages = JSON.parse(localStorage.getItem('userMessages')) || [];
+      const msg = messages[index];
+      alert('Reply feature coming soon! For now, please use the contact form.');
+    }
+
+    function deleteMessage(index) {
+      if (confirm('Are you sure you want to delete this message?')) {
+        const messages = JSON.parse(localStorage.getItem('userMessages')) || [];
+        messages.splice(index, 1);
+        localStorage.setItem('userMessages', JSON.stringify(messages));
+        loadMessages();
+      }
+    }
+  </script>
+</body>
+</html>
