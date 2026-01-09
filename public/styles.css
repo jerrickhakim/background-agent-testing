@@ -19,6 +19,9 @@ body {
   color: var(--text-color);
   line-height: 1.6;
   background-color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
@@ -677,7 +680,7 @@ body {
   color: white;
   text-align: center;
   padding: 2rem;
-  margin-top: 3rem;
+  margin-top: auto;
 }
 
 /* Message Page */

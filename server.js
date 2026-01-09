@@ -17,6 +17,16 @@ app.get('/faqs', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'faqs.html'));
 });
 
+app.get('/contact', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'contact.html'));
+});
+
+app.get('/shop', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'shop.html'));
+});
+
+app.get('/message', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'message.html'));
 });
 
 // API endpoint for products

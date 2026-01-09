@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Fetch and display featured products
-// Fetch and display featured products
 async function loadFeaturedProducts() {
   try {
     const response = await fetch('/api/products');
@@ -29,8 +28,6 @@ async function loadFeaturedProducts() {
     console.error('Error loading featured products:', error);
     featuredProducts.innerHTML = '<p>Failed to load featured products. Please try again later.</p>';
   }
-}
-
 }
 
 // Create a product card element
@@ -54,6 +51,10 @@ function createProductCard(product) {
       </div>
     </div>
   `;
+  
+  return card;
+}
+
 // Add product to cart
 async function addToCart(productId) {
   try {
@@ -75,14 +76,6 @@ async function addToCart(productId) {
   } catch (error) {
     console.error('Error adding to cart:', error);
     showNotification('Failed to add product to cart');
-  }
-}
-
-      cart.push({ ...product, quantity: 1 });
-    }
-    saveCart();
-    updateCartCount();
-    showNotification(`Product added to cart!`);
   }
 }
 
