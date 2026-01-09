@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TechShop Blog - Latest tech news, tips, and updates">
+  <title>Blog - TechShop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <h1>TechShop</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/blog" class="active">Blog</a></li>
+        <li><a href="/faqs">FAQs</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      <div class="cart-icon">
+        <span>🛒</span>
+        <span class="cart-count">0</span>
+      </div>
+    </div>
+  </nav>
+
+  <section class="blog-header">
+    <div class="container">
+      <h1>Tech Blog</h1>
+      <p>Explore the latest tech news, tips, and updates from the world of technology</p>
+    </div>
+  </section>
+
+  <section class="blog-content">
+    <div class="container">
+      <div class="blog-wrapper">
+        <aside class="blog-sidebar">
+          <div class="search-section">
+            <h3>Search Posts</h3>
+            <input 
+              type="text" 
+              id="search-input" 
+              class="blog-search-input" 
+              placeholder="Search blog posts..."
+            >
+          </div>
+
+          <div class="filter-section">
+            <h3>Categories</h3>
+            <div class="filter-group">
+              <label>
+                <input type="checkbox" name="category" value="all" checked>
+                All Categories
+              </label>
+              <label>
+                <input type="checkbox" name="category" value="gadgets">
+                Gadgets
+              </label>
+              <label>
+                <input type="checkbox" name="category" value="tutorials">
+                Tutorials
+              </label>
+              <label>
+                <input type="checkbox" name="category" value="reviews">
+                Reviews
+              </label>
+              <label>
+                <input type="checkbox" name="category" value="tips">
+                Tips & Tricks
+              </label>
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <h3>Recent Posts</h3>
+            <ul class="recent-posts-list" id="recent-posts">
+              <!-- Recent posts will be loaded here -->
+            </ul>
+          </div>
+        </aside>
+
+        <main class="blog-main">
+          <div class="blog-posts-grid" id="blog-posts">
+            <!-- Blog posts will be loaded here -->
+          </div>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 TechShop. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    // Sample blog posts data
+    const blogPosts = [
+      {
+        id: 1,
+        title: "The Future of Artificial Intelligence in Consumer Tech",
+        category: "gadgets",
+        author: "Sarah Chen",
+        date: "2026-01-08",
+        excerpt: "Explore how AI is revolutionizing consumer gadgets and what we can expect in the coming years. From smart assistants to predictive features...",
+        content: "Artificial Intelligence is transforming how we interact with technology. Modern consumer gadgets are becoming smarter and more intuitive, learning from our preferences and adapting to our needs. In this comprehensive guide, we'll explore the latest AI trends in consumer tech, including machine learning applications, neural networks in wearables, and the evolution of voice assistants. The future promises even more exciting developments as AI continues to advance.",
+        image: "🤖",
+        readTime: "5 min read"
+      },
+      {
+        id: 2,
+        title: "Ultimate Guide to Wireless Earbuds: Features Compared",
+        category: "reviews",
+        author: "Michael Rodriguez",
+        date: "2026-01-06",
+        excerpt: "We break down the top wireless earbud options on the market, comparing sound quality, battery life, comfort, and price. Find your perfect match...",
+        content: "Wireless earbuds have become an essential tech accessory for many of us. In this detailed review, we compare the leading wireless earbud options available today. We examine sound quality through various audio tests, battery life in real-world scenarios, comfort for extended use, and value for money. Whether you're looking for budget-friendly options or premium audiophile-grade earbuds, we've got you covered with our comprehensive comparison guide.",
+        image: "🎧",
+        readTime: "7 min read"
+      },
+      {
+        id: 3,
+        title: "Smart Home Setup: A Beginner's Tutorial",
+        category: "tutorials",
+        author: "James Park",
+        date: "2026-01-04",
+        excerpt: "Get started with smart home automation. Learn how to set up smart devices, create automation routines, and build your connected home ecosystem...",
+        content: "Building a smart home doesn't have to be complicated. In this step-by-step tutorial, we'll guide you through the process of setting up your first smart home devices. From choosing a smart hub to connecting lights, thermostats, and security devices, we cover everything you need to know. We also explore popular platforms like Google Home, Amazon Alexa, and Apple HomeKit, helping you decide which ecosystem works best for your needs.",
+        image: "🏠",
+        readTime: "8 min read"
+      },
+      {
+        id: 4,
+        title: "5 Essential Tech Tips to Boost Your Productivity",
+        category: "tips",
+        author: "Emma Watson",
+        date: "2026-01-02",
+        excerpt: "Discover practical tech tips and tricks that can significantly improve your daily productivity. From keyboard shortcuts to automation tools...",
+        content: "Technology should enhance your productivity, not hinder it. In this post, we share five essential tech tips that have helped thousands of users work more efficiently. Learn about powerful keyboard shortcuts that save hours each week, automation tools that handle repetitive tasks, cloud synchronization strategies, and digital organization techniques. These practical tips are applicable to both Windows and Mac users, and they work across various applications.",
+        image: "⚡",
+        readTime: "4 min read"
+      },
+      {
+        id: 5,
+        title: "5G Technology Explained: What You Need to Know",
+        category: "gadgets",
+        author: "David Liu",
+        date: "2025-12-31",
+        excerpt: "Understanding 5G technology: how it works, its benefits, and how it will impact your devices. Everything you need to know about the next-gen network...",
+        content: "5G is transforming mobile connectivity with unprecedented speeds and lower latency. In this comprehensive guide, we explain how 5G technology works, breaking down the technical details into easy-to-understand concepts. We discuss the benefits of 5G for smartphone users, IoT devices, and emerging applications. Learn about the differences between 5G bands, coverage expectations, and practical impacts on your daily device usage.",
+        image: "📡",
+        readTime: "6 min read"
+      },
+      {
+        id: 6,
+        title: "Gaming Laptops 2026: Performance vs. Portability",
+        category: "reviews",
+        author: "Alex Thompson",
+        date: "2025-12-28",
+        excerpt: "In-depth review of the best gaming laptops of 2026. We analyze performance metrics, thermal management, design, and overall value...",
+        content: "Gaming laptops have evolved significantly in 2026, offering incredible performance in increasingly portable form factors. In this review, we test the latest gaming laptops across multiple metrics including GPU performance, CPU speed, thermal management, and display quality. We compare premium options with budget-friendly alternatives, helping you find the best gaming laptop for your needs and budget. Includes detailed benchmark results and real-world gaming tests.",
+        image: "🎮",
+        readTime: "9 min read"
+      }
+    ];
+
+    // Function to render blog posts
+    function renderBlogPosts(posts) {
+      const container = document.getElementById('blog-posts');
+      container.innerHTML = '';
+
+      if (posts.length === 0) {
+        container.innerHTML = '<div class="no-posts">No blog posts found. Try adjusting your filters.</div>';
+        return;
+      }
+
+      posts.forEach(post => {
+        const postElement = document.createElement('article');
+        postElement.className = 'blog-post-card';
+        postElement.innerHTML = `
+          <div class="post-header">
+            <div class="post-image">${post.image}</div>
+            <div class="post-meta">
+              <span class="post-category">${post.category}</span>
+              <span class="post-date">${new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            </div>
+          </div>
+          <div class="post-content">
+            <h2 class="post-title">${post.title}</h2>
+            <p class="post-excerpt">${post.excerpt}</p>
+            <div class="post-footer">
+              <span class="post-author">By ${post.author}</span>
+              <span class="post-read-time">${post.readTime}</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <button class="btn btn-secondary read-more" data-post-id="${post.id}">Read More</button>
+          </div>
+        `;
+        container.appendChild(postElement);
+      });
+
+      // Add event listeners to read more buttons
+      document.querySelectorAll('.read-more').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const postId = this.getAttribute('data-post-id');
+          showBlogPostModal(postId);
+        });
+      });
+    }
+
+    // Function to show blog post in modal
+    function showBlogPostModal(postId) {
+      const post = blogPosts.find(p => p.id === parseInt(postId));
+      if (!post) return;
+
+      const modal = document.createElement('div');
+      modal.className = 'blog-modal';
+      modal.innerHTML = `
+        <div class="blog-modal-content">
+          <button class="modal-close">&times;</button>
+          <div class="modal-header">
+            <div class="modal-image">${post.image}</div>
+            <div class="modal-meta">
+              <span class="modal-category">${post.category}</span>
+              <span class="modal-date">${new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            </div>
+          </div>
+          <div class="modal-body">
+            <h1>${post.title}</h1>
+            <div class="modal-post-info">
+              <span class="modal-author">By ${post.author}</span>
+              <span class="modal-read-time">${post.readTime}</span>
+            </div>
+            <div class="modal-post-content">
+              ${post.content}
+            </div>
+          </div>
+        </div>
+      `;
+
+      document.body.appendChild(modal);
+
+      const closeBtn = modal.querySelector('.modal-close');
+      closeBtn.addEventListener('click', () => modal.remove());
+
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.remove();
+      });
+    }
+
+    // Function to update recent posts sidebar
+    function updateRecentPosts(posts) {
+      const container = document.getElementById('recent-posts');
+      const recentPosts = posts.slice(0, 5);
+
+      container.innerHTML = recentPosts.map(post => `
+        <li class="recent-post-item">
+          <a href="#" class="recent-post-link" data-post-id="${post.id}">
+            <span class="recent-post-title">${post.title}</span>
+            <span class="recent-post-date">${new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+          </a>
+        </li>
+      `).join('');
+
+      document.querySelectorAll('.recent-post-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const postId = link.getAttribute('data-post-id');
+          showBlogPostModal(postId);
+        });
+      });
+    }
+
+    // Function to filter posts
+    function filterPosts() {
+      const searchTerm = document.getElementById('search-input').value.toLowerCase();
+      const selectedCategories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(cb => cb.value);
+
+      let filtered = blogPosts;
+
+      // Apply search filter
+      if (searchTerm) {
+        filtered = filtered.filter(post =>
+          post.title.toLowerCase().includes(searchTerm) ||
+          post.excerpt.toLowerCase().includes(searchTerm) ||
+          post.content.toLowerCase().includes(searchTerm)
+        );
+      }
+
+      // Apply category filter
+      if (!selectedCategories.includes('all')) {
+        filtered = filtered.filter(post => selectedCategories.includes(post.category));
+      }
+
+      // Sort by date (newest first)
+      filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      renderBlogPosts(filtered);
+      updateRecentPosts(filtered);
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      // Update cart count
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartCount = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+      document.querySelector('.cart-count').textContent = cartCount;
+
+      // Initial render
+      renderBlogPosts(blogPosts);
+      updateRecentPosts(blogPosts);
+
+      // Add event listeners
+      document.getElementById('search-input').addEventListener('input', filterPosts);
+      document.querySelectorAll('input[name="category"]').forEach(checkbox => {
+        checkbox.addEventListener('change', filterPosts);
+      });
+    });
+  </script>
+</body>
+</html>
