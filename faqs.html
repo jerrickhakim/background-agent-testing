@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - DataFlow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #f7fafc;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background-color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Header Section */
+        .faq-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .faq-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .faq-header p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Search Bar */
+        .search-section {
+            max-width: 600px;
+            margin: -2rem auto 0;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .search-box {
+            display: flex;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-box button {
+            padding: 1rem 1.5rem;
+            background-color: #667eea;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-box button:hover {
+            background-color: #764ba2;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Category Tabs */
+        .category-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+        }
+
+        .category-tab {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #e2e8f0;
+            background-color: white;
+            color: #4a5568;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .category-tab:hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .category-tab.active {
+            background-color: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        /* FAQ Item */
+        .faq-item {
+            background-color: white;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #1a1a1a;
+            background-color: white;
+            transition: background-color 0.3s ease;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            background-color: #f7fafc;
+        }
+
+        .faq-question-text {
+            font-size: 1.1rem;
+            flex: 1;
+        }
+
+        .faq-toggle {
+            width: 1.5rem;
+            height: 1.5rem;
+            background-color: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .faq-toggle:hover {
+            background-color: #764ba2;
+        }
+
+        .faq-toggle.open {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background-color: #f7fafc;
+        }
+
+        .faq-answer.open {
+            max-height: 500px;
+        }
+
+        .faq-answer-text {
+            padding: 0 1.5rem 1.5rem;
+            color: #4a5568;
+            line-height: 1.8;
+        }
+
+        /* Contact Section */
+        .contact-cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .contact-cta h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-cta p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .btn-primary {
+            padding: 1rem 2.5rem;
+            background-color: white;
+            color: #667eea;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .faq-header h1 {
+                font-size: 2rem;
+            }
+
+            .faq-header p {
+                font-size: 1rem;
+            }
+
+            .category-tabs {
+                gap: 0.5rem;
+            }
+
+            .category-tab {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .faq-question {
+                padding: 1rem;
+            }
+
+            .faq-question-text {
+                font-size: 1rem;
+            }
+
+            .contact-cta h2 {
+                font-size: 1.5rem;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            .search-box input,
+            .search-box button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">DataFlow</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- FAQ Header -->
+    <section class="faq-header">
+        <h1>Frequently Asked Questions</h1>
+        <p>Find answers to common questions about DataFlow and how we can help transform your business.</p>
+    </section>
+
+    <!-- Search Bar -->
+    <div class="search-section">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search FAQs...">
+            <button>Search</button>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Category Tabs -->
+        <div class="category-tabs">
+            <button class="category-tab active" data-category="all">All</button>
+            <button class="category-tab" data-category="general">General</button>
+            <button class="category-tab" data-category="pricing">Pricing</button>
+            <button class="category-tab" data-category="technical">Technical</button>
+            <button class="category-tab" data-category="support">Support</button>
+        </div>
+
+        <!-- FAQ Items -->
+        <div class="faq-container">
+            <!-- General Category -->
+            <div class="faq-item" data-category="general">
+                <div class="faq-question">
+                    <span class="faq-question-text">What is DataFlow?</span>
+                    <button class="faq-toggle">+</button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-text">
+                        DataFlow is an AI-powered analytics platform that transforms raw data into actionable insights. Our platform helps businesses make smarter decisions by providing real-time data analysis, visualization, and predictive insights across all your business operations.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="general">
+                <div class="faq-question">
+                    <span class="faq-question-text">Who should use DataFlow?</span>
+                    <button class="faq-toggle">+</button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-text">
+                        DataFlow is designed for businesses of all sizes - from startups to enterprises. Whether you're a marketing professional analyzing campaign performance, a sales manager tracking KPIs, or a data scientist building complex models, DataFlow provides tools tailored to your needs.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="general">
+                <div class="faq-question">
+                    <span class="faq-question-text">How long does it take to get started?</span>
+                    <button class="faq-toggle">+</button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-text">
+                        You can get started with DataFlow in minutes. Simply sign up for a free account, connect your data sources, and begin analyzing within 15 minutes. Our onboarding wizard guides you through each step and provides templates for common use cases.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pricing Category -->
+            <div class="faq-item" data-category="pricing">
+                <div class="faq-question">
+                    <span class="faq-question-text">What are your pricing plans?</span>
+                    <button class="faq-toggle">+</button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-text">
+                        We offer four pricing plans: Free (limited features), Starter ($29/month for small teams), Professional ($99/month for growing businesses), and Enterprise (custom pricing). All paid plans include priority support, advanced features, and dedicated account management. You can view detailed pricing at our pricing page.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="pricing">
+                <div class="faq-question">
+                    <span class="faq-question-text">Is there a free trial available?</span>
+                    <button class="faq-toggle">+</button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-text">
+                        Yes! All new users get a 14-day free trial of our Professional plan with full access to all features. No credit card required. After the trial ends, you can choose to upgrade to a paid plan or continue with our free plan.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="pricing">
+                <div class="faq-question">
+                    <span class="faq-question-text">Can I upgrade or downgrade my plan?</span>
+                    <button class="faq-toggle">+</button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-text">
+                        Absolutely! You can upgrade or downgrade your plan at any time from your account settings. Changes take effect immediately, and we'll prorate your billing accordingly. There are no long-term contracts or cancellation fees.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Category -->
+            <div class="faq-item" data-category="technical">
+                <div class="faq-question">
+                    <span class="faq-question-text">What data sources does DataFlow support?</span>
+                    <button class="faq-toggle">+</button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-text">
+                        DataFlow integrates with 500+ data sources including databases (SQL Server, PostgreSQL, MySQL), cloud platforms (AWS, Google Cloud, Azure), business tools (Salesforce, HubSpot, Stripe), and file formats (CSV, JSON, Excel). We add new integrations regularly based on user demand.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="technical">
+                <div class="faq-question">
+                    <span class="faq-question-text">Is my data secure in DataFlow?</span>
+                    <button class="faq-toggle">+</button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-text">
+                        Security is our top priority. All data is encrypted in transit (TLS 1.2+) and at rest (AES 256-bit encryption). We're compliant with SOC 2 Type II, GDPR, HIPAA, and CCPA standards. We perform regular security audits and penetration testing to ensure your data remains protected.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="technical">
+                <div class="faq-question">
+                    <span class="faq-question-text">Can I use DataFlow's API?</span>
+                    <button class="faq-toggle">+</button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-text">
+                        Yes! DataFlow offers a comprehensive REST API for Professional and Enterprise plans. You can programmatically create reports, query data, manage users, and build custom integrations. Full API documentation and code examples are available in our developer portal.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Support Category -->
+            <div class="faq-item" data-category="support">
+                <div class="faq-question">
+                    <span class="faq-question-text">What support options are available?</span>
+                    <button class="faq-toggle">+</button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-text">
+                        We offer multiple support channels: email support (all plans), live chat (Starter and above), and phone support (Professional and Enterprise). Response times vary by plan, with Enterprise customers receiving 24/7 dedicated support with 1-hour response time guaranteed.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="support">
+                <div class="faq-question">
+                    <span class="faq-question-text">Is there training available?</span>
+                    <button class="faq-toggle">+</button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-text">
+                        We provide comprehensive training resources including video tutorials, documentation, webinars, and certification programs. Enterprise customers also receive personalized training sessions with our specialists. All resources are available in our learning center.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="support">
+                <div class="faq-question">
+                    <span class="faq-question-text">What is your uptime guarantee?</span>
+                    <button class="faq-toggle">+</button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-text">
+                        DataFlow guarantees 99.9% uptime for all paid plans. Our infrastructure is hosted on leading cloud providers with automatic failover and redundancy. In the unlikely event of downtime, Enterprise customers receive service credits as outlined in our SLA.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact CTA -->
+        <div class="contact-cta">
+            <h2>Still have questions?</h2>
+            <p>Can't find the answer you're looking for? Our support team is here to help!</p>
+            <button class="btn-primary">Contact Support</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 DataFlow. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // FAQ Toggle Functionality
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                const answer = faqItem.querySelector('.faq-answer');
+                const toggle = this.querySelector('.faq-toggle');
+                
+                // Close all other FAQs
+                document.querySelectorAll('.faq-answer.open').forEach(openAnswer => {
+                    if (openAnswer !== answer) {
+                        openAnswer.classList.remove('open');
+                        openAnswer.parentElement.querySelector('.faq-toggle').classList.remove('open');
+                    }
+                });
+                
+                // Toggle current FAQ
+                answer.classList.toggle('open');
+                toggle.classList.toggle('open');
+            });
+        });
+
+        // Category Filter
+        const categoryTabs = document.querySelectorAll('.category-tab');
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        categoryTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                
+                // Update active tab
+                categoryTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter items
+                faqItems.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Search Functionality
+        const searchInput = document.getElementById('searchInput');
+        
+        searchInput.addEventListener('keyup', function() {
+            const searchTerm = this.value.toLowerCase();
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question-text').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer-text').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm) || searchTerm === '') {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
