@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Read the latest tech news, reviews, and insights on TechShop Blog">
+  <title>Blog - TechShop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <h1>TechShop</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/blog" class="active">Blog</a></li>
+        <li><a href="/faqs">FAQs</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      <div class="cart-icon">
+        <span>🛒</span>
+        <span class="cart-count">0</span>
+      </div>
+    </div>
+  </nav>
+
+  <section class="blog-header">
+    <div class="container">
+      <h1>TechShop Blog</h1>
+      <p>Latest insights, reviews, and news from the tech world</p>
+    </div>
+  </section>
+
+  <section class="blog-content">
+    <div class="container">
+      <div class="blog-wrapper">
+        <main class="blog-main">
+          <div class="search-filter">
+            <input type="text" id="search-input" class="search-box" placeholder="Search articles...">
+            <select id="category-filter" class="category-select">
+              <option value="">All Categories</option>
+              <option value="news">News</option>
+              <option value="review">Reviews</option>
+              <option value="tutorial">Tutorials</option>
+              <option value="tips">Tips & Tricks</option>
+            </select>
+          </div>
+
+          <div class="blog-posts" id="blog-posts">
+            <!-- Blog posts will be loaded here -->
+          </div>
+
+          <div class="pagination" id="pagination">
+            <!-- Pagination will be added here -->
+          </div>
+        </main>
+
+        <aside class="blog-sidebar">
+          <div class="sidebar-section">
+            <h3>Popular Articles</h3>
+            <div class="popular-posts" id="popular-posts">
+              <!-- Popular posts will be loaded here -->
+            </div>
+          </div>
+
+          <div class="sidebar-section">
+            <h3>Categories</h3>
+            <div class="categories-list" id="categories-list">
+              <!-- Categories will be loaded here -->
+            </div>
+          </div>
+
+          <div class="sidebar-section">
+            <h3>Newsletter</h3>
+            <form class="newsletter-form" id="newsletter-form">
+              <input type="email" placeholder="Your email address" required>
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 TechShop. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="blog.js"></script>
+</body>
+</html>
