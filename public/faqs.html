@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQs - TechShop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <h1>TechShop</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/faqs" class="active">FAQs</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+      <div class="cart-icon">
+        <span>🛒</span>
+        <span class="cart-count">0</span>
+      </div>
+    </div>
+  </nav>
+
+  <section class="faqs-header">
+    <div class="container">
+      <h1>Frequently Asked Questions</h1>
+      <p>Find answers to common questions about TechShop</p>
+    </div>
+  </section>
+
+  <section class="faqs-content">
+    <div class="container">
+      <div class="faqs-container">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-title">What payment methods do you accept?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and digital payment methods. All transactions are secured with SSL encryption.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-title">What is your return policy?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>We offer a 30-day return policy on all products. Items must be unused and in original packaging. Simply contact our customer service team to initiate a return, and we'll provide a prepaid shipping label.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-title">How long does shipping take?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Standard shipping typically takes 5-7 business days. Express shipping is available and takes 2-3 business days. International orders may take 10-14 business days depending on the destination.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-title">Do you offer warranty on products?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes, all our products come with manufacturer warranties ranging from 1 to 3 years depending on the item. Some products offer extended warranty options for additional protection.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-title">Can I track my order?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes, you'll receive a tracking number via email once your order ships. You can use this number to track your package in real-time on our website or the carrier's website.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-title">Is my personal information secure?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Absolutely. We use industry-standard SSL encryption and PCI compliance to protect your personal and payment information. Your data is never shared with third parties without your consent.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-title">Do you offer bulk discounts?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes, we offer special pricing for bulk orders. For orders of 10 or more items, please contact our sales team directly at sales@techshop.com to get a custom quote.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-title">How do I contact customer support?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>You can reach our customer support team via email at support@techshop.com, phone at 1-800-TECHSHOP, or through the live chat on our website. We're available Monday-Friday, 9am-5pm EST.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-title">Are there seasonal sales or promotions?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes, we run regular promotions throughout the year including Black Friday, Cyber Monday, and holiday sales. Subscribe to our newsletter to get notified about upcoming deals and exclusive offers.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span class="faq-title">Can I cancel my order?</span>
+            <span class="faq-toggle">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Orders can be cancelled within 1 hour of placement before processing begins. If your order has already shipped, you can refuse delivery or initiate a return. Contact us immediately for assistance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 TechShop. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFaq(button) {
+      const faqItem = button.parentElement;
+      const isActive = faqItem.classList.contains('active');
+      
+      // Close all other FAQs
+      document.querySelectorAll('.faq-item.active').forEach(item => {
+        if (item !== faqItem) {
+          item.classList.remove('active');
+        }
+      });
+      
+      // Toggle current FAQ
+      faqItem.classList.toggle('active');
+    }
+
+    // Update cart count on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const cartCount = localStorage.getItem('cartCount') || '0';
+      document.querySelector('.cart-count').textContent = cartCount;
+    });
+  </script>
+</body>
+</html>
