@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TechShop Blog - Latest tech news, tips, and product reviews">
+  <title>Blog - TechShop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <h1>TechShop</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/blog" class="active">Blog</a></li>
+        <li><a href="/faqs">FAQs</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      <div class="cart-icon">
+        <span>🛒</span>
+        <span class="cart-count">0</span>
+      </div>
+    </div>
+  </nav>
+
+  <section class="blog-header">
+    <div class="container">
+      <h1>TechShop Blog</h1>
+      <p>Discover the latest tech news, reviews, and expert tips</p>
+    </div>
+  </section>
+
+  <section class="blog-content">
+    <div class="container">
+      <div class="blog-wrapper">
+        <div class="blog-main">
+          <div class="blog-articles" id="blogArticles">
+            <!-- Blog articles will be loaded here -->
+          </div>
+        </div>
+
+        <aside class="blog-sidebar">
+          <div class="sidebar-section">
+            <h3>Search</h3>
+            <form class="search-form" onsubmit="handleSearch(event)">
+              <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="Search articles..." 
+                class="search-input"
+              >
+              <button type="submit" class="search-btn">Search</button>
+            </form>
+          </div>
+
+          <div class="sidebar-section">
+            <h3>Categories</h3>
+            <div class="categories-list">
+              <a href="#" onclick="filterByCategory('all', event)" class="category-tag active">All</a>
+              <a href="#" onclick="filterByCategory('reviews', event)" class="category-tag">Reviews</a>
+              <a href="#" onclick="filterByCategory('tips', event)" class="category-tag">Tips & Tricks</a>
+              <a href="#" onclick="filterByCategory('news', event)" class="category-tag">News</a>
+              <a href="#" onclick="filterByCategory('tutorials', event)" class="category-tag">Tutorials</a>
+            </div>
+          </div>
+
+          <div class="sidebar-section">
+            <h3>Recent Posts</h3>
+            <div class="recent-posts" id="recentPosts">
+              <!-- Recent posts will be loaded here -->
+            </div>
+          </div>
+
+          <div class="sidebar-section">
+            <h3>Subscribe</h3>
+            <p>Get the latest tech articles delivered to your inbox.</p>
+            <form class="subscribe-form" onsubmit="handleSubscribe(event)">
+              <input 
+                type="email" 
+                placeholder="Your email" 
+                class="subscribe-input"
+                required
+              >
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 TechShop. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    // Sample blog data
+    const blogArticles = [
+      {
+        id: 1,
+        title: '10 Essential Tech Accessories Everyone Needs',
+        excerpt: 'Discover the must-have tech accessories that can enhance your daily productivity and device experience.',
+        content: 'In this comprehensive guide, we explore the essential tech accessories that have become indispensable for modern users. From protective cases to charging solutions, learn which accessories are worth the investment and how they can improve your tech setup.',
+        author: 'Sarah Chen',
+        category: 'reviews',
+        date: '2026-01-08',
+        image: 'https://via.placeholder.com/600x400?text=Tech+Accessories',
+        readTime: '5 min read'
+      },
+      {
+        id: 2,
+        title: 'Wireless Charging: Everything You Need to Know',
+        excerpt: 'Learn about the technology behind wireless charging and how to choose the right charger for your devices.',
+        content: 'Wireless charging technology has revolutionized how we power our devices. This detailed guide covers the basics of Qi charging, compatibility considerations, and tips for maximizing charging efficiency. We also compare top-rated wireless chargers on the market.',
+        author: 'Mike Johnson',
+        category: 'tutorials',
+        date: '2026-01-06',
+        image: 'https://via.placeholder.com/600x400?text=Wireless+Charging',
+        readTime: '8 min read'
+      },
+      {
+        id: 3,
+        title: 'Latest Smartphone Features Explained',
+        excerpt: 'Stay updated on the newest smartphone technologies and understand what makes them worth upgrading.',
+        content: 'The latest smartphones come with cutting-edge features. From advanced camera systems to faster processors, discover what innovations are reshaping mobile technology and whether you should consider an upgrade.',
+        author: 'Emma Wilson',
+        category: 'news',
+        date: '2026-01-04',
+        image: 'https://via.placeholder.com/600x400?text=Smartphone+Features',
+        readTime: '6 min read'
+      },
+      {
+        id: 4,
+        title: 'Top 5 Tips to Extend Your Device Battery Life',
+        excerpt: 'Maximize your device battery lifespan with these practical and easy-to-implement tips.',
+        content: 'Battery health is crucial for device longevity. Learn five proven strategies to extend your battery life, from optimizing settings to proper charging habits. These simple tips can add months or even years to your device battery lifespan.',
+        author: 'David Lee',
+        category: 'tips',
+        date: '2026-01-02',
+        image: 'https://via.placeholder.com/600x400?text=Battery+Life',
+        readTime: '4 min read'
+      },
+      {
+        id: 5,
+        title: 'How to Choose the Right Phone Case',
+        excerpt: 'A comprehensive guide to selecting the perfect protective case for your smartphone.',
+        content: 'With countless phone case options available, choosing the right one can be overwhelming. This guide breaks down different case types, materials, and features to help you find the perfect balance between protection and style.',
+        author: 'Lisa Anderson',
+        category: 'guides',
+        date: '2025-12-31',
+        image: 'https://via.placeholder.com/600x400?text=Phone+Cases',
+        readTime: '5 min read'
+      },
+      {
+        id: 6,
+        title: 'USB-C vs Lightning: Which is Better?',
+        excerpt: 'Compare the two most popular charging standards and understand their pros and cons.',
+        content: 'The debate between USB-C and Lightning has been ongoing for years. In this article, we analyze the technical differences, compatibility, and future outlook of both charging standards to help you understand which connector technology is superior.',
+        author: 'James Rodriguez',
+        category: 'reviews',
+        date: '2025-12-28',
+        image: 'https://via.placeholder.com/600x400?text=USB+Standards',
+        readTime: '7 min read'
+      }
+    ];
+
+    let filteredArticles = [...blogArticles];
+    let currentCategory = 'all';
+
+    function formatDate(dateString) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(dateString).toLocaleDateString('en-US', options);
+    }
+
+    function renderArticles(articles) {
+      const articlesContainer = document.getElementById('blogArticles');
+      
+      if (articles.length === 0) {
+        articlesContainer.innerHTML = '<p class="no-results">No articles found. Try adjusting your search or filters.</p>';
+        return;
+      }
+
+      articlesContainer.innerHTML = articles.map(article => `
+        <article class="blog-article">
+          <div class="article-image">
+            <img src="${article.image}" alt="${article.title}">
+            <span class="article-category">${article.category}</span>
+          </div>
+          <div class="article-content">
+            <div class="article-meta">
+              <span class="article-date">${formatDate(article.date)}</span>
+              <span class="article-read-time">${article.readTime}</span>
+            </div>
+            <h2 class="article-title">${article.title}</h2>
+            <p class="article-excerpt">${article.excerpt}</p>
+            <div class="article-footer">
+              <span class="article-author">By ${article.author}</span>
+              <a href="#" onclick="readMore(${article.id}, event)" class="read-more-btn">Read More</a>
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function renderRecentPosts() {
+      const recentContainer = document.getElementById('recentPosts');
+      const recent = blogArticles.slice(0, 4);
+      
+      recentContainer.innerHTML = recent.map(article => `
+        <div class="recent-post-item">
+          <img src="${article.image}" alt="${article.title}" class="recent-post-image">
+          <div class="recent-post-info">
+            <h4>${article.title}</h4>
+            <p class="recent-post-date">${formatDate(article.date)}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterByCategory(category, event) {
+      event.preventDefault();
+      currentCategory = category;
+      
+      // Update active category button
+      document.querySelectorAll('.category-tag').forEach(tag => {
+        tag.classList.remove('active');
+      });
+      event.target.classList.add('active');
+      
+      // Filter articles
+      if (category === 'all') {
+        filteredArticles = [...blogArticles];
+      } else {
+        filteredArticles = blogArticles.filter(article => article.category === category);
+      }
+      
+      renderArticles(filteredArticles);
+    }
+
+    function handleSearch(event) {
+      event.preventDefault();
+      const searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
+      
+      if (!searchQuery) {
+        if (currentCategory === 'all') {
+          filteredArticles = [...blogArticles];
+        } else {
+          filteredArticles = blogArticles.filter(article => article.category === currentCategory);
+        }
+      } else {
+        let searchResults = blogArticles.filter(article =>
+          article.title.toLowerCase().includes(searchQuery) ||
+          article.excerpt.toLowerCase().includes(searchQuery) ||
+          article.content.toLowerCase().includes(searchQuery)
+        );
+
+        if (currentCategory !== 'all') {
+          searchResults = searchResults.filter(article => article.category === currentCategory);
+        }
+
+        filteredArticles = searchResults;
+      }
+      
+      renderArticles(filteredArticles);
+    }
+
+    function readMore(articleId, event) {
+      event.preventDefault();
+      const article = blogArticles.find(a => a.id === articleId);
+      
+      if (article) {
+        alert(`Article: ${article.title}\n\n${article.content}\n\n- By ${article.author}`);
+      }
+    }
+
+    function handleSubscribe(event) {
+      event.preventDefault();
+      const email = event.target.querySelector('.subscribe-input').value;
+      
+      if (email) {
+        // Store subscription
+        const subscriptions = JSON.parse(localStorage.getItem('blogSubscriptions')) || [];
+        if (!subscriptions.includes(email)) {
+          subscriptions.push(email);
+          localStorage.setItem('blogSubscriptions', JSON.stringify(subscriptions));
+        }
+        
+        alert('Thank you for subscribing! You will receive our latest articles in your inbox.');
+        event.target.reset();
+      }
+    }
+
+    // Initialize blog on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      renderArticles(filteredArticles);
+      renderRecentPosts();
+      
+      // Update cart count
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartCount = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+      document.querySelector('.cart-count').textContent = cartCount;
+    });
+  </script>
+</body>
+</html>
