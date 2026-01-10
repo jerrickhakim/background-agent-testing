@@ -29,6 +29,10 @@ app.get('/message', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'message.html'));
 });
 
+app.get('/blog', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'blog.html'));
+});
+
 // API endpoint for products
 app.get('/api/products', (req, res) => {
   const products = [
