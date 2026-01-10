@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TechShop Blog - Latest tech news, reviews, and insights">
+  <title>Blog - TechShop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <h1>TechShop</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/blog" class="active">Blog</a></li>
+        <li><a href="/faqs">FAQs</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      <div class="cart-icon">
+        <span>🛒</span>
+        <span class="cart-count">0</span>
+      </div>
+    </div>
+  </nav>
+
+  <section class="blog-header">
+    <div class="container">
+      <h1>TechShop Blog</h1>
+      <p>Stay updated with the latest tech news, reviews, and insights</p>
+    </div>
+  </section>
+
+  <section class="blog-content">
+    <div class="container">
+      <div class="blog-wrapper">
+        <div class="blog-sidebar">
+          <div class="blog-search">
+            <input 
+              type="text" 
+              id="searchInput" 
+              placeholder="Search articles..." 
+              class="search-input"
+            >
+          </div>
+          
+          <div class="blog-filter">
+            <h3>Categories</h3>
+            <div class="filter-group">
+              <label>
+                <input type="checkbox" value="all" class="category-filter" checked>
+                All Articles
+              </label>
+              <label>
+                <input type="checkbox" value="gadgets" class="category-filter">
+                Gadgets
+              </label>
+              <label>
+                <input type="checkbox" value="reviews" class="category-filter">
+                Reviews
+              </label>
+              <label>
+                <input type="checkbox" value="tutorials" class="category-filter">
+                Tutorials
+              </label>
+              <label>
+                <input type="checkbox" value="news" class="category-filter">
+                News
+              </label>
+            </div>
+          </div>
+
+          <div class="blog-filter">
+            <h3>Recent Posts</h3>
+            <div id="recentPostsList" class="recent-posts-list">
+              <!-- Recent posts will be populated here -->
+            </div>
+          </div>
+        </div>
+
+        <div class="blog-main">
+          <div class="blog-posts-container" id="blogPostsContainer">
+            <!-- Blog posts will be loaded here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 TechShop. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    // Sample blog posts data
+    const blogPosts = [
+      {
+        id: 1,
+        title: "The Future of AI in Consumer Tech",
+        category: "gadgets",
+        author: "Sarah Johnson",
+        date: "2026-01-08",
+        excerpt: "Explore how artificial intelligence is revolutionizing consumer electronics and what it means for the future.",
+        content: "Artificial intelligence has become increasingly prevalent in consumer technology. From smart home devices to wearables, AI is transforming how we interact with technology. In this comprehensive guide, we'll explore the latest advancements, potential applications, and what the future holds for AI-powered consumer devices.",
+        image: "🤖"
+      },
+      {
+        id: 2,
+        title: "Best Wireless Headphones of 2026",
+        category: "reviews",
+        author: "Mike Chen",
+        date: "2026-01-06",
+        excerpt: "We've tested the top wireless headphones on the market. Here are our top picks for sound quality, comfort, and value.",
+        content: "Finding the perfect wireless headphones can be challenging with so many options available. We've spent weeks testing the latest models, evaluating sound quality, noise cancellation, battery life, and comfort. This detailed review covers the best options across different price ranges.",
+        image: "🎧"
+      },
+      {
+        id: 3,
+        title: "Getting Started with Smart Home Setup",
+        category: "tutorials",
+        author: "Emily Rodriguez",
+        date: "2026-01-05",
+        excerpt: "A beginner's guide to setting up your first smart home devices and automating your living space.",
+        content: "Smart home technology doesn't have to be complicated. In this step-by-step tutorial, we'll walk you through the basics of setting up smart home devices, connecting them to your network, and creating automations that will make your life easier and your home more comfortable.",
+        image: "🏠"
+      },
+      {
+        id: 4,
+        title: "New Processor Technology Unveiled",
+        category: "news",
+        author: "David Park",
+        date: "2026-01-04",
+        excerpt: "Tech companies announce breakthrough in processor efficiency with 40% power improvements over previous generations.",
+        content: "In a major announcement, leading tech companies have unveiled new processor technology that promises significant improvements in energy efficiency and performance. The new architecture delivers 40% better power efficiency while maintaining or improving computational speeds, setting new standards for mobile and portable devices.",
+        image: "💻"
+      },
+      {
+        id: 5,
+        title: "Smartphone Camera Evolution",
+        category: "gadgets",
+        author: "Lisa Wong",
+        date: "2026-01-03",
+        excerpt: "How smartphone cameras have evolved over the past decade and what innovations are coming next.",
+        content: "Smartphone cameras have come a long way since the early days of mobile photography. From megapixel races to computational photography, the evolution has been remarkable. This article explores the technological advancements that have made smartphone photography rival dedicated cameras.",
+        image: "📱"
+      },
+      {
+        id: 6,
+        title: "Essential Cybersecurity Tips for Tech Users",
+        category: "tutorials",
+        author: "Alex Turner",
+        date: "2026-01-02",
+        excerpt: "Protect yourself online with these essential cybersecurity practices and tools everyone should know about.",
+        content: "Cybersecurity is more important than ever. Whether you're an average user or a tech enthusiast, protecting your digital life is crucial. Learn about password management, two-factor authentication, secure browsing habits, and tools that can help keep your data safe from threats.",
+        image: "🔒"
+      }
+    ];
+
+    function renderBlogPosts(posts) {
+      const container = document.getElementById('blogPostsContainer');
+      
+      if (posts.length === 0) {
+        container.innerHTML = '<div class="no-posts">No blog posts found. Try adjusting your filters.</div>';
+        return;
+      }
+
+      container.innerHTML = posts.map(post => `
+        <article class="blog-post-card">
+          <div class="blog-post-image">${post.image}</div>
+          <div class="blog-post-content">
+            <div class="blog-post-meta">
+              <span class="blog-category-badge">${post.category}</span>
+              <span class="blog-date">${new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+            </div>
+            <h2 class="blog-post-title">${post.title}</h2>
+            <p class="blog-post-author">By ${post.author}</p>
+            <p class="blog-post-excerpt">${post.excerpt}</p>
+            <a href="#" class="blog-read-more" onclick="readMore(event, ${post.id})">Read More →</a>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function renderRecentPosts() {
+      const recentPostsList = document.getElementById('recentPostsList');
+      const recentPosts = blogPosts.slice(0, 5);
+      
+      recentPostsList.innerHTML = recentPosts.map(post => `
+        <div class="recent-post-item" onclick="jumpToPost(${post.id})">
+          <h4>${post.title}</h4>
+          <p>${new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</p>
+        </div>
+      `).join('');
+    }
+
+    function filterPosts() {
+      const searchValue = document.getElementById('searchInput').value.toLowerCase();
+      const categoryFilters = Array.from(document.querySelectorAll('.category-filter'))
+        .filter(checkbox => checkbox.checked)
+        .map(checkbox => checkbox.value);
+
+      let filteredPosts = blogPosts;
+
+      // Filter by category
+      if (!categoryFilters.includes('all')) {
+        filteredPosts = filteredPosts.filter(post => categoryFilters.includes(post.category));
+      }
+
+      // Filter by search
+      if (searchValue) {
+        filteredPosts = filteredPosts.filter(post =>
+          post.title.toLowerCase().includes(searchValue) ||
+          post.excerpt.toLowerCase().includes(searchValue) ||
+          post.category.toLowerCase().includes(searchValue)
+        );
+      }
+
+      renderBlogPosts(filteredPosts);
+    }
+
+    function readMore(event, postId) {
+      event.preventDefault();
+      const post = blogPosts.find(p => p.id === postId);
+      alert(`Full Article: "${post.title}"\n\n${post.content}`);
+    }
+
+    function jumpToPost(postId) {
+      // Scroll to post and highlight
+      const post = blogPosts.find(p => p.id === postId);
+      if (post) {
+        document.getElementById('searchInput').value = '';
+        document.querySelectorAll('.category-filter').forEach(cb => cb.checked = false);
+        document.querySelector('.category-filter[value="all"]').checked = true;
+        renderBlogPosts(blogPosts);
+      }
+    }
+
+    // Event listeners
+    document.getElementById('searchInput').addEventListener('input', filterPosts);
+    document.querySelectorAll('.category-filter').forEach(checkbox => {
+      checkbox.addEventListener('change', filterPosts);
+    });
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      renderBlogPosts(blogPosts);
+      renderRecentPosts();
+      
+      // Update cart count on page load
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartCount = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+      document.querySelector('.cart-count').textContent = cartCount;
+    });
+  </script>
+</body>
+</html>
