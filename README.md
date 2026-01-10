@@ -1,6 +1,9 @@
 # TechShop - E-Commerce Shop Page
 
-A modern, fully functional e-commerce shop page built with Node.js, Express, HTML, CSS, and JavaScript.
+[![Node.js Version](https://img.shields.io/badge/node-%3E%3D14.0.0-brightgreen)](https://nodejs.org/)
+[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
+
+A modern, fully functional e-commerce shop page built with Node.js, Hono, HTML, CSS, and JavaScript.
 
 ## Features
 
@@ -18,11 +21,14 @@ A modern, fully functional e-commerce shop page built with Node.js, Express, HTM
 
 ```
 .
-├── server.js           # Express server and API endpoints
+├── server.js           # Hono server and API endpoints
 ├── package.json        # Project dependencies
 ├── public/
 │   ├── index.html      # Home page
 │   ├── shop.html       # Shop page with filtering
+│   ├── contact.html    # Contact page
+│   ├── faqs.html       # FAQs page
+│   ├── message.html    # Message/thank you page
 │   ├── app.js          # Home page JavaScript
 │   ├── shop.js         # Shop page JavaScript with filtering
 │   └── styles.css      # Global styles
@@ -38,7 +44,7 @@ npm install
 
 2. Start the server:
 ```bash
-npm start
+npm run dev
 ```
 
 3. Open your browser and navigate to:
@@ -89,7 +95,7 @@ Each product includes:
 
 ## Technologies Used
 
-- **Backend**: Node.js, Express.js
+- **Backend**: Node.js, Hono.js
 - **Frontend**: HTML5, CSS3, Vanilla JavaScript
 - **Storage**: localStorage for cart persistence
 - **API**: RESTful JSON API
@@ -111,3 +117,7 @@ Works on all modern browsers including:
 - Payment integration
 - Advanced search
 - Product details page
+
+## License
+
+This project is licensed under the ISC License.
