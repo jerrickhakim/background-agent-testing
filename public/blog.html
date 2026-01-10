@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TechShop Blog - Latest articles, reviews, and tech tips">
+  <title>Blog - TechShop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <h1>TechShop</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/blog" class="active">Blog</a></li>
+        <li><a href="/faqs">FAQs</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      <div class="cart-icon">
+        <span>🛒</span>
+        <span class="cart-count">0</span>
+      </div>
+    </div>
+  </nav>
+
+  <section class="blog-header">
+    <div class="container">
+      <h1>TechShop Blog</h1>
+      <p>Discover the latest tech trends, reviews, and expert tips</p>
+    </div>
+  </section>
+
+  <section class="blog-content">
+    <div class="container">
+      <div class="blog-wrapper">
+        <div class="blog-main">
+          <div class="blog-posts" id="blogPosts">
+            <!-- Blog posts will be loaded here -->
+          </div>
+          <div class="blog-pagination">
+            <button class="pagination-btn" id="prevBtn" style="display: none;">Previous</button>
+            <div class="pagination-info">
+              <span id="pageInfo">Page 1 of 1</span>
+            </div>
+            <button class="pagination-btn" id="nextBtn" style="display: none;">Next</button>
+          </div>
+        </div>
+
+        <aside class="blog-sidebar">
+          <div class="sidebar-section">
+            <h3>Search Posts</h3>
+            <div class="search-box">
+              <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="Search blog posts..."
+                class="search-input"
+              >
+            </div>
+          </div>
+
+          <div class="sidebar-section">
+            <h3>Categories</h3>
+            <div class="categories-list">
+              <label class="category-item">
+                <input type="checkbox" class="category-filter" value="">
+                <span>All Categories</span>
+              </label>
+              <label class="category-item">
+                <input type="checkbox" class="category-filter" value="reviews">
+                <span>Reviews</span>
+              </label>
+              <label class="category-item">
+                <input type="checkbox" class="category-filter" value="tutorials">
+                <span>Tutorials</span>
+              </label>
+              <label class="category-item">
+                <input type="checkbox" class="category-filter" value="tips">
+                <span>Tips & Tricks</span>
+              </label>
+              <label class="category-item">
+                <input type="checkbox" class="category-filter" value="news">
+                <span>Tech News</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="sidebar-section">
+            <h3>Recent Posts</h3>
+            <div class="recent-posts" id="recentPosts">
+              <!-- Recent posts will be loaded here -->
+            </div>
+          </div>
+
+          <div class="sidebar-section">
+            <h3>Newsletter</h3>
+            <p class="newsletter-text">Subscribe to get the latest tech articles delivered to your inbox.</p>
+            <form class="newsletter-form" id="newsletterForm" onsubmit="handleNewsletterSubmit(event)">
+              <input 
+                type="email" 
+                placeholder="Your email" 
+                required 
+                class="newsletter-input"
+              >
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+            <div class="newsletter-message" id="newsletterMessage"></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 TechShop. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    let allPosts = [];
+    let filteredPosts = [];
+    let currentPage = 1;
+    const postsPerPage = 5;
+
+    // Blog posts data
+    const blogPosts = [
+      {
+        id: 1,
+        title: "The Future of Wireless Technology",
+        author: "Sarah Johnson",
+        date: "2026-01-08",
+        category: "news",
+        image: "https://via.placeholder.com/800x400?text=Wireless+Technology",
+        excerpt: "Discover how wireless technology is evolving and what the future holds for connectivity.",
+        content: "Wireless technology continues to advance at an unprecedented pace. From 5G networks to WiFi 6E, the future of connectivity is becoming clearer. In this comprehensive article, we explore the latest innovations and their impact on our daily lives."
+      },
+      {
+        id: 2,
+        title: "How to Extend Your Phone Battery Life",
+        author: "Mike Chen",
+        date: "2026-01-06",
+        category: "tips",
+        image: "https://via.placeholder.com/800x400?text=Battery+Life",
+        excerpt: "Learn practical tips and tricks to maximize your phone's battery performance.",
+        content: "Is your phone battery draining too quickly? In this guide, we provide you with proven strategies to extend battery life, from optimizing settings to managing background apps. Follow these tips and keep your phone charged longer."
+      },
+      {
+        id: 3,
+        title: "Top 5 Best Wireless Headphones 2026",
+        author: "Emma Williams",
+        date: "2026-01-04",
+        category: "reviews",
+        image: "https://via.placeholder.com/800x400?text=Wireless+Headphones",
+        excerpt: "Our expert review of the best wireless headphones available this year.",
+        content: "We've tested dozens of wireless headphones to bring you the top 5 models. From budget-friendly options to premium choices, we cover audio quality, comfort, and battery life. Find the perfect pair for your needs."
+      },
+      {
+        id: 4,
+        title: "Getting Started with Smart Home Automation",
+        author: "Alex Rodriguez",
+        date: "2026-01-02",
+        category: "tutorials",
+        image: "https://via.placeholder.com/800x400?text=Smart+Home",
+        excerpt: "A beginner's guide to setting up your first smart home devices.",
+        content: "Smart home automation doesn't have to be complicated. This step-by-step tutorial walks you through choosing the right devices, setting them up correctly, and creating automations that improve your daily life. Perfect for beginners!"
+      },
+      {
+        id: 5,
+        title: "USB-C vs Lightning: The Great Cable Debate",
+        author: "James Miller",
+        date: "2025-12-31",
+        category: "news",
+        image: "https://via.placeholder.com/800x400?text=USB-C+vs+Lightning",
+        excerpt: "Understanding the differences between USB-C and Lightning connectors.",
+        content: "The debate between USB-C and Lightning continues. We break down the specifications, advantages, and disadvantages of each connector type. Which one will dominate the future of mobile devices?"
+      },
+      {
+        id: 6,
+        title: "Maximizing Photography with Your Smartphone",
+        author: "Lisa Anderson",
+        date: "2025-12-29",
+        category: "tips",
+        image: "https://via.placeholder.com/800x400?text=Smartphone+Photography",
+        excerpt: "Professional photography tips using only your smartphone camera.",
+        content: "Your smartphone is a powerful camera. Learn composition techniques, lighting tips, and post-processing methods to take stunning photos. We cover everything from landscape photography to portrait mode mastery."
+      },
+      {
+        id: 7,
+        title: "Best Portable Chargers for Travelers",
+        author: "David Lee",
+        date: "2025-12-27",
+        category: "reviews",
+        image: "https://via.placeholder.com/800x400?text=Portable+Chargers",
+        excerpt: "Our selection of the best portable chargers for keeping your devices powered on the go.",
+        content: "Travel without worrying about battery life. We review the top portable chargers, considering capacity, speed, weight, and price. Whether you need a compact option or a powerful solution, we have recommendations."
+      },
+      {
+        id: 8,
+        title: "Understanding Smartphone Security",
+        author: "Robert Taylor",
+        date: "2025-12-25",
+        category: "tutorials",
+        image: "https://via.placeholder.com/800x400?text=Smartphone+Security",
+        excerpt: "A comprehensive guide to keeping your smartphone and data secure.",
+        content: "Security should be a priority for every smartphone user. Learn about biometric authentication, secure passwords, app permissions, and privacy settings. We provide actionable steps to protect your personal information."
+      },
+      {
+        id: 9,
+        title: "Latest Tech Gadgets Released This Month",
+        author: "Jennifer Brown",
+        date: "2025-12-23",
+        category: "news",
+        image: "https://via.placeholder.com/800x400?text=Latest+Gadgets",
+        excerpt: "A roundup of the most exciting tech gadgets released recently.",
+        content: "Stay informed about the latest tech releases. From new smartwatches to innovative IoT devices, we cover the most exciting products hitting the market. Check out our detailed reviews and recommendations."
+      },
+      {
+        id: 10,
+        title: "Troubleshooting Common Tech Issues",
+        author: "Paul Martinez",
+        date: "2025-12-21",
+        category: "tips",
+        image: "https://via.placeholder.com/800x400?text=Tech+Support",
+        excerpt: "Solutions to the most common tech problems and how to fix them yourself.",
+        content: "Experiencing tech troubles? This comprehensive guide covers common issues like slow performance, connectivity problems, and software glitches. Follow our troubleshooting steps to resolve issues without professional help."
+      }
+    ];
+
+    function initBlog() {
+      allPosts = blogPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+      filteredPosts = [...allPosts];
+      loadRecentPosts();
+      renderBlogPosts();
+      setupEventListeners();
+    }
+
+    function setupEventListeners() {
+      // Search functionality
+      document.getElementById('searchInput').addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        filterPosts(searchTerm);
+      });
+
+      // Category filter
+      document.querySelectorAll('.category-filter').forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+          applyFilters();
+        });
+      });
+
+      // Pagination buttons
+      document.getElementById('prevBtn').addEventListener('click', () => {
+        if (currentPage > 1) {
+          currentPage--;
+          renderBlogPosts();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+
+      document.getElementById('nextBtn').addEventListener('click', () => {
+        const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+        if (currentPage < totalPages) {
+          currentPage++;
+          renderBlogPosts();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    }
+
+    function filterPosts(searchTerm) {
+      const selectedCategories = Array.from(document.querySelectorAll('.category-filter:checked'))
+        .map(cb => cb.value)
+        .filter(val => val !== '');
+
+      filteredPosts = allPosts.filter(post => {
+        const matchesSearch = post.title.toLowerCase().includes(searchTerm) ||
+                            post.excerpt.toLowerCase().includes(searchTerm) ||
+                            post.author.toLowerCase().includes(searchTerm);
+
+        const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(post.category);
+
+        return matchesSearch && matchesCategory;
+      });
+
+      currentPage = 1;
+      renderBlogPosts();
+    }
+
+    function applyFilters() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      filterPosts(searchTerm);
+    }
+
+    function renderBlogPosts() {
+      const container = document.getElementById('blogPosts');
+      const start = (currentPage - 1) * postsPerPage;
+      const end = start + postsPerPage;
+      const postsToShow = filteredPosts.slice(start, end);
+
+      if (postsToShow.length === 0) {
+        container.innerHTML = '<div class="no-posts">No blog posts found. Try adjusting your search or filters.</div>';
+        updatePaginationUI();
+        return;
+      }
+
+      container.innerHTML = postsToShow.map(post => `
+        <article class="blog-post-card">
+          <div class="post-image">
+            <img src="${post.image}" alt="${post.title}">
+            <span class="post-category-badge">${post.category}</span>
+          </div>
+          <div class="post-content">
+            <div class="post-meta">
+              <span class="post-author">By ${post.author}</span>
+              <span class="post-date">${formatDate(post.date)}</span>
+            </div>
+            <h2 class="post-title"><a href="#" class="post-link" onclick="showPostDetail(${post.id}, event)">${post.title}</a></h2>
+            <p class="post-excerpt">${post.excerpt}</p>
+            <a href="#" class="read-more-btn" onclick="showPostDetail(${post.id}, event)">Read More →</a>
+          </div>
+        </article>
+      `).join('');
+
+      updatePaginationUI();
+    }
+
+    function updatePaginationUI() {
+      const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+      document.getElementById('pageInfo').textContent = `Page ${currentPage} of ${totalPages}`;
+
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+
+      prevBtn.style.display = currentPage > 1 ? 'block' : 'none';
+      nextBtn.style.display = currentPage < totalPages ? 'block' : 'none';
+    }
+
+    function loadRecentPosts() {
+      const recentContainer = document.getElementById('recentPosts');
+      const recent = allPosts.slice(0, 3);
+
+      recentContainer.innerHTML = recent.map(post => `
+        <div class="recent-post-item">
+          <h4><a href="#" onclick="showPostDetail(${post.id}, event)" class="recent-post-link">${post.title}</a></h4>
+          <p class="recent-post-date">${formatDate(post.date)}</p>
+        </div>
+      `).join('');
+    }
+
+    function showPostDetail(postId, event) {
+      event.preventDefault();
+      const post = allPosts.find(p => p.id === postId);
+      if (!post) return;
+
+      const detailHTML = `
+        <div class="post-detail-overlay" onclick="closePostDetail(event)">
+          <div class="post-detail-modal" onclick="event.stopPropagation()">
+            <button class="close-modal-btn" onclick="closePostDetail()">&times;</button>
+            <article class="post-detail">
+              <img src="${post.image}" alt="${post.title}" class="detail-image">
+              <div class="detail-content">
+                <div class="detail-meta">
+                  <span class="detail-category">${post.category}</span>
+                  <span class="detail-author">By ${post.author}</span>
+                  <span class="detail-date">${formatDate(post.date)}</span>
+                </div>
+                <h1 class="detail-title">${post.title}</h1>
+                <p class="detail-text">${post.content}</p>
+                <div class="detail-footer">
+                  <button class="btn btn-secondary" onclick="closePostDetail()">Close</button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      `;
+
+      let detailContainer = document.getElementById('postDetailContainer');
+      if (!detailContainer) {
+        detailContainer = document.createElement('div');
+        detailContainer.id = 'postDetailContainer';
+        document.body.appendChild(detailContainer);
+      }
+
+      detailContainer.innerHTML = detailHTML;
+      detailContainer.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePostDetail(event) {
+      if (event && event.target.id !== 'postDetailContainer') return;
+      const detailContainer = document.getElementById('postDetailContainer');
+      if (detailContainer) {
+        detailContainer.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    function formatDate(dateString) {
+      const options = { year: 'numeric', month: 'short', day: 'numeric' };
+      return new Date(dateString).toLocaleDateString('en-US', options);
+    }
+
+    function handleNewsletterSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+      const email = form.querySelector('input[type="email"]').value;
+
+      const messageEl = document.getElementById('newsletterMessage');
+      messageEl.textContent = 'Subscribing...';
+      messageEl.style.color = '#6b7280';
+
+      setTimeout(() => {
+        messageEl.textContent = 'Thank you for subscribing!';
+        messageEl.style.color = '#10b981';
+        form.reset();
+
+        setTimeout(() => {
+          messageEl.textContent = '';
+        }, 3000);
+      }, 500);
+    }
+
+    // Update cart count on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartCount = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+      document.querySelector('.cart-count').textContent = cartCount;
+
+      initBlog();
+    });
+  </script>
+</body>
+</html>
