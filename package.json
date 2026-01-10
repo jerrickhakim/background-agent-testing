@@ -1,11 +1,12 @@
 {
   "name": "shop-page",
   "version": "1.0.0",
-  "description": "A modern e-commerce shop page built with Express and vanilla JavaScript",
+  "description": "A modern e-commerce shop page built with Hono and vanilla JavaScript",
   "main": "server.js",
+  "type": "module",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "install": "npm install"
   },
   "keywords": [
     "shop",
@@ -16,7 +17,7 @@
   "author": "TechShop",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "hono": "^4.0.0"
   },
   "devDependencies": {},
   "engines": {
