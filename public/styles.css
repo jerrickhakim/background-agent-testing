@@ -995,3 +995,144 @@ body {
     padding: 1rem 10px;
   }
 }
+
+/* Blog Article Styles */
+.blog-article {
+  flex: 1;
+}
+
+.blog-header {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: white;
+  padding: 3rem 0;
+  margin-bottom: 2rem;
+}
+
+.blog-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.blog-meta {
+  font-size: 1rem;
+  opacity: 0.9;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.blog-meta span {
+  display: flex;
+  align-items: center;
+}
+
+.blog-content {
+  padding: 2rem 0;
+}
+
+.article-section {
+  margin-bottom: 3rem;
+}
+
+.article-section h2 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  border-bottom: 3px solid var(--accent-color);
+  padding-bottom: 0.5rem;
+}
+
+.article-section h3 {
+  font-size: 1.3rem;
+  color: var(--secondary-color);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.article-section p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  line-height: 1.8;
+}
+
+.article-list {
+  list-style-position: inside;
+  margin-left: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.article-list li {
+  margin-bottom: 0.8rem;
+  font-size: 1.05rem;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.article-subsection {
+  background-color: var(--light-gray);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--accent-color);
+  border-radius: 4px;
+}
+
+.article-subsection h3 {
+  margin-top: 0;
+}
+
+.article-tips {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.tip {
+  background-color: white;
+  border: 2px solid var(--border-color);
+  padding: 1.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.tip:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+}
+
+.tip h4 {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.tip p {
+  font-size: 1rem;
+  color: var(--text-color);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .blog-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .blog-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .article-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .article-section h3 {
+    font-size: 1.15rem;
+  }
+
+  .article-tips {
+    grid-template-columns: 1fr;
+  }
+}
