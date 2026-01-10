@@ -1,113 +1,191 @@
-# TechShop - E-Commerce Shop Page
+# TechShop - Modern E-Commerce Platform
 
-A modern, fully functional e-commerce shop page built with Node.js, Express, HTML, CSS, and JavaScript.
+A sleek, feature-rich e-commerce platform for tech enthusiasts, built with a modern tech stack combining Hono backend with vanilla JavaScript frontend.
 
-## Features
+## What is TechShop?
 
-- Responsive design that works on desktop, tablet, and mobile devices
-- Product filtering by category and price range
-- Product sorting options (price, rating, featured)
-- Add to cart functionality with persistent storage
-- Add to wishlist feature
-- Shopping cart counter in navigation
-- Featured products section on homepage
-- Clean and modern UI with smooth animations
-- Product ratings and reviews display
+TechShop is a full-featured online marketplace where customers can browse, filter, and purchase tech products with an intuitive interface and smooth user experience. Perfect for selling electronics and accessories.
 
-## Project Structure
+## Quick Start
 
-```
-.
-├── server.js           # Express server and API endpoints
-├── package.json        # Project dependencies
-├── public/
-│   ├── index.html      # Home page
-│   ├── shop.html       # Shop page with filtering
-│   ├── app.js          # Home page JavaScript
-│   ├── shop.js         # Shop page JavaScript with filtering
-│   └── styles.css      # Global styles
-└── README.md          # This file
-```
+Get TechShop running in seconds:
 
-## Installation
-
-1. Install dependencies:
 ```bash
 npm install
+npm run dev
 ```
 
-2. Start the server:
-```bash
-npm start
-```
+Then open http://localhost:3000 in your browser.
 
-3. Open your browser and navigate to:
-```
-http://localhost:3000
-```
+## Key Features
 
-## Features Overview
+Product Discovery & Shopping
+- Browse a curated collection of tech products
+- Advanced filtering by category (Electronics, Accessories)
+- Price range filtering with interactive slider
+- Multiple sorting options (Featured, Price, Rating)
+- Real-time product ratings and reviews
 
-### Home Page
-- Hero section with call-to-action
-- Featured products showcase
-- Navigation to shop page
-
-### Shop Page
-- Full product catalog
-- Left sidebar with filters:
-  - Category filter (Electronics, Accessories)
-  - Price range slider
-  - Sorting options (Featured, Price, Rating)
-- Product cards with:
-  - Product image
-  - Name and category
-  - Star ratings
-  - Price
-  - Add to cart button
-  - Add to wishlist button
-
-### Shopping Features
-- Add products to cart
-- Cart persists across page reloads using localStorage
-- Real-time cart counter in navigation
+Smart Shopping Experience
+- Add items to cart with one click
+- Persistent cart using browser storage
+- Wishlist functionality for saving favorites
+- Live shopping cart counter in navigation
 - Toast notifications for user actions
 
-## API Endpoints
+Responsive Design
+- Seamless experience across desktop, tablet, and mobile
+- Touch-friendly interface
+- Optimized performance
+- Modern animations and transitions
 
-- `GET /api/products` - Returns all available products with details
+## Core Pages
 
-## Product Data
+Home (/)
+Display a welcoming hero section, featured product showcase, and navigation to the shop.
 
-Each product includes:
-- ID
-- Name
-- Price
-- Image URL
-- Category (electronics/accessories)
-- Rating (1-5 stars)
+Shop (/shop)
+Full product catalog with advanced filtering sidebar, product grid with sorting options.
 
-## Technologies Used
+FAQs (/faqs)
+Comprehensive FAQ section covering payments, shipping, returns, warranties, and support.
 
-- **Backend**: Node.js, Express.js
-- **Frontend**: HTML5, CSS3, Vanilla JavaScript
-- **Storage**: localStorage for cart persistence
-- **API**: RESTful JSON API
+Contact (/contact)
+Customer contact form and business information.
 
-## Browser Compatibility
+Message (/message)
+Message confirmation page.
 
-Works on all modern browsers including:
-- Chrome/Edge (latest)
+## Technical Architecture
+
+Backend Stack
+- **Runtime**: Node.js
+- **Framework**: Hono - A lightweight, ultrafast web framework
+- **API**: RESTful JSON endpoints
+- **Static Files**: Express-style middleware for public assets
+
+Frontend Stack
+- **HTML5**: Semantic markup
+- **CSS3**: Modern styling with animations
+- **JavaScript**: Vanilla ES6+ for interactivity
+- **Storage**: Browser localStorage for cart persistence
+
+## API Reference
+
+Get All Products
+```
+GET /api/products
+```
+
+Returns a JSON array of all available products with the following structure:
+```json
+{
+  "id": 1,
+  "name": "Product Name",
+  "price": 99.99,
+  "image": "https://...",
+  "category": "electronics|accessories",
+  "rating": 4.5
+}
+```
+
+## Project Layout
+
+```
+techshop/
+├── server.js              # Hono server & API setup
+├── package.json           # Dependencies & scripts
+├── public/
+│   ├── index.html         # Home page
+│   ├── shop.html          # Shop page with filtering
+│   ├── faqs.html          # FAQ section
+│   ├── contact.html       # Contact page
+│   ├── message.html       # Message confirmation
+│   ├── app.js             # Home page logic
+│   ├── shop.js            # Shop filtering & cart
+│   └── styles.css         # Global styling
+└── README.md              # This file
+```
+
+## Product Catalog
+
+The store comes pre-loaded with 8 sample products:
+- Wireless Headphones
+- USB-C Cables
+- Phone Cases
+- Portable Chargers
+- Screen Protectors
+- Bluetooth Speakers
+- Phone Stands
+- Wireless Chargers
+
+Each product includes pricing, ratings, category tags, and product images.
+
+## Features in Detail
+
+Smart Filtering
+- Filter by category (Electronics or Accessories)
+- Adjust price range dynamically
+- Instant result updates
+
+Advanced Sorting
+- Featured products first
+- Sort by price (low to high)
+- Sort by customer rating
+
+Cart Management
+- Add/remove items easily
+- Cart persists across sessions
+- Real-time quantity tracking
+- Item total calculations
+
+Wishlist Feature
+- Save favorite products
+- Quick access to saved items
+- Add to cart directly from wishlist
+
+## Browser Support
+
+TechShop works on all modern browsers:
+- Chrome/Chromium (latest)
 - Firefox (latest)
 - Safari (latest)
-- Mobile browsers
+- Edge (latest)
+- Mobile Safari & Chrome
 
-## Future Enhancements
+## System Requirements
 
-- User authentication
-- Order history
-- Product reviews
-- Checkout process
-- Payment integration
-- Advanced search
-- Product details page
+- Node.js 14.0.0 or higher
+- Modern web browser
+- 10MB free disk space
+
+## What's Next?
+
+TechShop is ready for expansion. Potential additions include:
+- User accounts & authentication
+- Order history and tracking
+- Product review system
+- Detailed product pages
+- Checkout & payment processing
+- Advanced search capabilities
+- Email notifications
+- Admin dashboard
+
+## Development
+
+To develop TechShop locally:
+1. Clone the repository
+2. Run `npm install`
+3. Run `npm run dev`
+4. Edit files in `/public` for frontend changes
+5. Edit `server.js` for backend changes
+
+Server hot-reloads on file changes.
+
+## License
+
+ISC
+
+## Support & Questions
+
+For issues, questions, or contributions, please contact the development team.
