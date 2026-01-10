@@ -40,6 +40,11 @@ app.get('/message', (c) => {
   return c.html(html);
 });
 
+app.get('/skateboarding', (c) => {
+  const html = fs.readFileSync(path.join(__dirname, 'public/skateboarding.html'), 'utf-8');
+  return c.html(html);
+});
+
 // API endpoint for products
 app.get('/api/products', (c) => {
   const products = [
