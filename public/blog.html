@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TechShop Blog - Tech tips, product reviews, and industry insights">
+  <title>Blog - TechShop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <h1>TechShop</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/blog" class="active">Blog</a></li>
+        <li><a href="/faqs">FAQs</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      <div class="cart-icon">
+        <span>🛒</span>
+        <span class="cart-count">0</span>
+      </div>
+    </div>
+  </nav>
+
+  <section class="blog-header">
+    <div class="container">
+      <h1>TechShop Blog</h1>
+      <p>Explore our latest tech tips, product reviews, and industry insights</p>
+    </div>
+  </section>
+
+  <section class="blog-content">
+    <div class="container">
+      <div class="blog-wrapper">
+        <div class="blog-main">
+          <div class="blog-posts" id="blogPosts">
+            <!-- Blog posts will be loaded here -->
+          </div>
+        </div>
+
+        <aside class="blog-sidebar">
+          <div class="sidebar-section">
+            <h3>Search</h3>
+            <input type="text" id="searchInput" class="search-box" placeholder="Search articles...">
+          </div>
+
+          <div class="sidebar-section">
+            <h3>Categories</h3>
+            <div class="categories-list">
+              <a href="#" class="category-filter" data-category="all">All Posts</a>
+              <a href="#" class="category-filter" data-category="tips">Tech Tips</a>
+              <a href="#" class="category-filter" data-category="reviews">Product Reviews</a>
+              <a href="#" class="category-filter" data-category="news">Industry News</a>
+              <a href="#" class="category-filter" data-category="tutorials">Tutorials</a>
+            </div>
+          </div>
+
+          <div class="sidebar-section">
+            <h3>Recent Posts</h3>
+            <div class="recent-posts" id="recentPosts">
+              <!-- Recent posts will be loaded here -->
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 TechShop. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    // Sample blog posts data
+    const blogPosts = [
+      {
+        id: 1,
+        title: '10 Essential Tech Gadgets for 2026',
+        excerpt: 'Discover the must-have tech gadgets that will improve your productivity and entertainment in 2026.',
+        content: 'In this comprehensive guide, we explore the top 10 tech gadgets that are transforming how we work and play. From innovative wearables to smart home devices, these gadgets combine cutting-edge technology with practical functionality. Whether you\'re a tech enthusiast or looking to upgrade your setup, this list has something for everyone. We\'ve tested each gadget thoroughly and provide detailed insights on their features, performance, and value for money.',
+        category: 'reviews',
+        author: 'John Smith',
+        date: '2026-01-08',
+        readTime: '5 min read',
+        image: 'https://via.placeholder.com/600x400?text=Tech+Gadgets+2026'
+      },
+      {
+        id: 2,
+        title: 'How to Extend Your Phone Battery Life',
+        excerpt: 'Simple tips and tricks to maximize your smartphone battery performance and longevity.',
+        content: 'Battery life is one of the most important factors when choosing a smartphone. In this guide, we share practical tips to help you extend your phone\'s battery life. From managing background apps to optimizing screen brightness, these simple adjustments can significantly improve your device\'s performance. We also discuss common myths about battery charging and provide scientific insights on how to maintain battery health over time.',
+        category: 'tips',
+        author: 'Sarah Johnson',
+        date: '2026-01-05',
+        readTime: '4 min read',
+        image: 'https://via.placeholder.com/600x400?text=Battery+Life+Tips'
+      },
+      {
+        id: 3,
+        title: 'The Future of Wireless Technology',
+        excerpt: 'Exploring the latest advancements in wireless connectivity and what\'s coming next.',
+        content: 'Wireless technology continues to evolve at a rapid pace. With the emergence of 5G and upcoming 6G developments, the future of connectivity looks promising. This article examines the latest breakthroughs in wireless technology, including Wi-Fi 6E, Bluetooth 5.3, and satellite internet options. We discuss how these technologies are reshaping industries and improving our daily lives. Industry experts share their predictions for the next decade.',
+        category: 'news',
+        author: 'Mike Chen',
+        date: '2026-01-03',
+        readTime: '7 min read',
+        image: 'https://via.placeholder.com/600x400?text=Wireless+Technology'
+      },
+      {
+        id: 4,
+        title: 'Getting Started with Smart Home Automation',
+        excerpt: 'A beginner\'s guide to setting up your first smart home devices.',
+        content: 'Smart home technology is more accessible than ever. This step-by-step tutorial walks you through setting up your first smart home system. We cover everything from choosing compatible devices to configuring automation routines. Whether you\'re interested in smart lighting, thermostats, or security cameras, we provide practical advice to get you started. Learn about popular platforms like Amazon Alexa, Google Home, and Apple HomeKit, and how to choose the right ecosystem for your needs.',
+        category: 'tutorials',
+        author: 'Emily Davis',
+        date: '2026-01-01',
+        readTime: '6 min read',
+        image: 'https://via.placeholder.com/600x400?text=Smart+Home+Setup'
+      },
+      {
+        id: 5,
+        title: 'Best USB-C Accessories You Should Own',
+        excerpt: 'Top USB-C cables and adapters that enhance your device connectivity.',
+        content: 'USB-C has become the standard for modern devices. In this review, we highlight the best USB-C accessories that every tech user should consider. From high-speed charging cables to versatile adapters, we test and recommend products that offer excellent value and reliability. We discuss important features like power delivery capacity, data transfer speeds, and durability. Whether you need cables for your smartphone, laptop, or tablet, this guide helps you make informed purchasing decisions.',
+        category: 'reviews',
+        author: 'Alex Martinez',
+        date: '2025-12-28',
+        readTime: '5 min read',
+        image: 'https://via.placeholder.com/600x400?text=USB-C+Accessories'
+      },
+      {
+        id: 6,
+        title: '5G Networks: What You Need to Know',
+        excerpt: 'Understanding 5G technology and its impact on mobile connectivity.',
+        content: '5G networks are revolutionizing mobile connectivity. This comprehensive article explains the technology behind 5G, its advantages over 4G, and how it\'s changing various industries. We discuss download speeds, latency improvements, and real-world applications including autonomous vehicles and IoT devices. Learn about 5G rollout progress worldwide and tips for accessing 5G networks if available in your area. We also address common concerns about 5G and provide evidence-based information about its safety.',
+        category: 'news',
+        author: 'Robert Taylor',
+        date: '2025-12-25',
+        readTime: '8 min read',
+        image: 'https://via.placeholder.com/600x400?text=5G+Networks'
+      }
+    ];
+
+    let filteredPosts = blogPosts;
+
+    function renderBlogPosts(posts) {
+      const blogPostsContainer = document.getElementById('blogPosts');
+      
+      if (posts.length === 0) {
+        blogPostsContainer.innerHTML = '<div class="no-posts">No blog posts found. Try adjusting your search or filter.</div>';
+        return;
+      }
+
+      blogPostsContainer.innerHTML = posts.map(post => `
+        <article class="blog-post">
+          <div class="blog-post-image">
+            <img src="${post.image}" alt="${post.title}">
+            <span class="category-badge">${capitalizeCategory(post.category)}</span>
+          </div>
+          <div class="blog-post-content">
+            <h2>${post.title}</h2>
+            <div class="blog-post-meta">
+              <span class="author">By ${post.author}</span>
+              <span class="date">${formatDate(post.date)}</span>
+              <span class="read-time">${post.readTime}</span>
+            </div>
+            <p class="blog-excerpt">${post.excerpt}</p>
+            <button class="btn btn-secondary read-more-btn" onclick="readMore(${post.id})">Read More →</button>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function renderRecentPosts(posts) {
+      const recentPostsContainer = document.getElementById('recentPosts');
+      const recent = posts.slice(0, 3);
+
+      recentPostsContainer.innerHTML = recent.map(post => `
+        <div class="recent-post-item">
+          <h4>${post.title}</h4>
+          <p class="recent-post-date">${formatDate(post.date)}</p>
+        </div>
+      `).join('');
+    }
+
+    function filterByCategory(category) {
+      if (category === 'all') {
+        filteredPosts = blogPosts;
+      } else {
+        filteredPosts = blogPosts.filter(post => post.category === category);
+      }
+      renderBlogPosts(filteredPosts);
+    }
+
+    function searchPosts(query) {
+      const lowerQuery = query.toLowerCase();
+      filteredPosts = blogPosts.filter(post =>
+        post.title.toLowerCase().includes(lowerQuery) ||
+        post.excerpt.toLowerCase().includes(lowerQuery) ||
+        post.content.toLowerCase().includes(lowerQuery)
+      );
+      renderBlogPosts(filteredPosts);
+    }
+
+    function readMore(postId) {
+      const post = blogPosts.find(p => p.id === postId);
+      if (post) {
+        alert(`Title: ${post.title}\n\nAuthor: ${post.author}\nDate: ${formatDate(post.date)}\n\n${post.content}`);
+      }
+    }
+
+    function formatDate(dateString) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(dateString).toLocaleDateString(undefined, options);
+    }
+
+    function capitalizeCategory(category) {
+      return category.charAt(0).toUpperCase() + category.slice(1);
+    }
+
+    // Event listeners
+    document.addEventListener('DOMContentLoaded', function() {
+      // Update cart count
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartCount = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+      document.querySelector('.cart-count').textContent = cartCount;
+
+      // Render initial posts
+      renderBlogPosts(blogPosts);
+      renderRecentPosts(blogPosts);
+
+      // Category filter listeners
+      document.querySelectorAll('.category-filter').forEach(filter => {
+        filter.addEventListener('click', function(e) {
+          e.preventDefault();
+          document.querySelectorAll('.category-filter').forEach(f => f.classList.remove('active'));
+          this.classList.add('active');
+          filterByCategory(this.dataset.category);
+        });
+      });
+
+      // Search functionality
+      const searchInput = document.getElementById('searchInput');
+      searchInput.addEventListener('input', function() {
+        searchPosts(this.value);
+      });
+    });
+  </script>
+</body>
+</html>
