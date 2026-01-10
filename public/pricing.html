@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore our flexible pricing plans for tech products and services">
+  <title>Pricing - TechShop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <h1>TechShop</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/pricing" class="active">Pricing</a></li>
+        <li><a href="/faqs">FAQs</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      <div class="cart-icon">
+        <span>🛒</span>
+        <span class="cart-count">0</span>
+      </div>
+    </div>
+  </nav>
+
+  <section class="pricing-header">
+    <div class="container">
+      <h1>Simple, Transparent Pricing</h1>
+      <p>Choose the perfect plan for your needs</p>
+    </div>
+  </section>
+
+  <section class="pricing-section">
+    <div class="container">
+      <div class="pricing-toggle">
+        <label class="toggle-label">
+          <span class="toggle-text">Bill Monthly</span>
+          <input type="checkbox" id="billing-toggle" class="toggle-checkbox">
+          <span class="toggle-slider"></span>
+          <span class="toggle-text">Bill Annually</span>
+        </label>
+        <span class="save-badge">Save 20%</span>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Starter Plan -->
+        <div class="pricing-card">
+          <div class="card-header">
+            <h3 class="plan-name">Starter</h3>
+            <p class="plan-description">Perfect for individuals</p>
+          </div>
+          
+          <div class="price-section">
+            <span class="currency">$</span>
+            <span class="price" data-monthly="29" data-annual="348">29</span>
+            <span class="period">/month</span>
+          </div>
+
+          <ul class="features-list">
+            <li class="feature">
+              <span class="feature-icon">✓</span>
+              <span>Up to 10 products</span>
+            </li>
+            <li class="feature">
+              <span class="feature-icon">✓</span>
+              <span>Basic analytics</span>
+            </li>
+            <li class="feature">
+              <span class="feature-icon">✓</span>
+              <span>Email support</span>
+            </li>
+            <li class="feature disabled">
+              <span class="feature-icon">✗</span>
+              <span>Advanced features</span>
+            </li>
+            <li class="feature disabled">
+              <span class="feature-icon">✗</span>
+              <span>Priority support</span>
+            </li>
+          </ul>
+
+          <button class="btn btn-plan btn-plan-starter">Get Started</button>
+        </div>
+
+        <!-- Professional Plan -->
+        <div class="pricing-card featured">
+          <div class="popular-badge">Most Popular</div>
+          <div class="card-header">
+            <h3 class="plan-name">Professional</h3>
+            <p class="plan-description">For growing businesses</p>
+          </div>
+          
+          <div class="price-section">
+            <span class="currency">$</span>
+            <span class="price" data-monthly="79" data-annual="948">79</span>
+            <span class="period">/month</span>
+          </div>
+
+          <ul class="features-list">
+            <li class="feature">
+              <span class="feature-icon">✓</span>
+              <span>Up to 100 products</span>
+            </li>
+            <li class="feature">
+              <span class="feature-icon">✓</span>
+              <span>Advanced analytics</span>
+            </li>
+            <li class="feature">
+              <span class="feature-icon">✓</span>
+              <span>Priority email & chat support</span>
+            </li>
+            <li class="feature">
+              <span class="feature-icon">✓</span>
+              <span>Advanced features</span>
+            </li>
+            <li class="feature disabled">
+              <span class="feature-icon">✗</span>
+              <span>24/7 phone support</span>
+            </li>
+          </ul>
+
+          <button class="btn btn-plan btn-plan-professional">Subscribe Now</button>
+        </div>
+
+        <!-- Enterprise Plan -->
+        <div class="pricing-card">
+          <div class="card-header">
+            <h3 class="plan-name">Enterprise</h3>
+            <p class="plan-description">For large organizations</p>
+          </div>
+          
+          <div class="price-section">
+            <span class="currency">$</span>
+            <span class="price" data-monthly="199" data-annual="2388">199</span>
+            <span class="period">/month</span>
+          </div>
+
+          <ul class="features-list">
+            <li class="feature">
+              <span class="feature-icon">✓</span>
+              <span>Unlimited products</span>
+            </li>
+            <li class="feature">
+              <span class="feature-icon">✓</span>
+              <span>Real-time analytics</span>
+            </li>
+            <li class="feature">
+              <span class="feature-icon">✓</span>
+              <span>24/7 dedicated support</span>
+            </li>
+            <li class="feature">
+              <span class="feature-icon">✓</span>
+              <span>All advanced features</span>
+            </li>
+            <li class="feature">
+              <span class="feature-icon">✓</span>
+              <span>Custom integrations</span>
+            </li>
+          </ul>
+
+          <button class="btn btn-plan btn-plan-enterprise">Contact Sales</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing-faq">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-grid">
+        <div class="faq-card">
+          <h3>Can I change plans anytime?</h3>
+          <p>Yes, you can upgrade or downgrade your plan at any time. Changes take effect at the start of your next billing cycle.</p>
+        </div>
+        <div class="faq-card">
+          <h3>Is there a free trial?</h3>
+          <p>We offer a 14-day free trial for all plans. No credit card required to get started.</p>
+        </div>
+        <div class="faq-card">
+          <h3>What payment methods do you accept?</h3>
+          <p>We accept all major credit cards, PayPal, and bank transfers for enterprise customers.</p>
+        </div>
+        <div class="faq-card">
+          <h3>Do you offer discounts for annual billing?</h3>
+          <p>Yes! Save 20% when you choose annual billing instead of monthly.</p>
+        </div>
+        <div class="faq-card">
+          <h3>What if I need more features?</h3>
+          <p>Contact our sales team to discuss custom solutions tailored to your specific needs.</p>
+        </div>
+        <div class="faq-card">
+          <h3>Is there a refund policy?</h3>
+          <p>We offer a 30-day money-back guarantee. If you're not satisfied, we'll refund your payment in full.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing-cta">
+    <div class="container">
+      <h2>Ready to get started?</h2>
+      <p>Join thousands of businesses using TechShop</p>
+      <a href="/shop" class="btn btn-primary">Start Your Free Trial</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 TechShop. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script src="pricing.js"></script>
+</body>
+</html>
