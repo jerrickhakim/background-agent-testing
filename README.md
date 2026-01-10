@@ -1,18 +1,23 @@
 # TechShop - E-Commerce Shop Page
 
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+
 A modern, fully functional e-commerce shop page built with Node.js, Express, HTML, CSS, and JavaScript.
 
 ## Features
 
-- Responsive design that works on desktop, tablet, and mobile devices
-- Product filtering by category and price range
-- Product sorting options (price, rating, featured)
-- Add to cart functionality with persistent storage
-- Add to wishlist feature
-- Shopping cart counter in navigation
-- Featured products section on homepage
-- Clean and modern UI with smooth animations
-- Product ratings and reviews display
+- **Responsive Design**: Works on desktop, tablet, and mobile devices.
+- **Product Filtering**: Filter products by category and price range.
+- **Product Sorting**: Sort products by price, rating, or featured status.
+- **Add to Cart**: Persistent cart functionality using localStorage.
+- **Wishlist**: Add products to a wishlist.
+- **Shopping Cart Counter**: Real-time cart counter in the navigation..
+- **Featured Products**: Showcase featured products on the homepage.
+- **Modern UI**: Clean and modern user interface with smooth animations.
+- **Product Ratings**: Display product ratings and reviews.
+- **Toast Notifications**: User-friendly notifications for actions like adding to cart.
 
 ## Project Structure
 
@@ -23,91 +28,47 @@ A modern, fully functional e-commerce shop page built with Node.js, Express, HTM
 ├── public/
 │   ├── index.html      # Home page
 │   ├── shop.html       # Shop page with filtering
+│   ├── contact.html    # Contact page
+│   ├── faqs.html       # FAQs page
+│   ├── message.html    # Message submission confirmation page
 │   ├── app.js          # Home page JavaScript
-│   ├── shop.js         # Shop page JavaScript with filtering
+│   ├── shop.js         # Shop page JavaScript
 │   └── styles.css      # Global styles
-└── README.md          # This file
+└── README.md           # This file
 ```
 
 ## Installation
 
-1. Install dependencies:
-```bash
-npm install
-```
-
-2. Start the server:
-```bash
-npm start
-```
-
-3. Open your browser and navigate to:
-```
-http://localhost:3000
-```
-
-## Features Overview
-
-### Home Page
-- Hero section with call-to-action
-- Featured products showcase
-- Navigation to shop page
-
-### Shop Page
-- Full product catalog
-- Left sidebar with filters:
-  - Category filter (Electronics, Accessories)
-  - Price range slider
-  - Sorting options (Featured, Price, Rating)
-- Product cards with:
-  - Product image
-  - Name and category
-  - Star ratings
-  - Price
-  - Add to cart button
-  - Add to wishlist button
-
-### Shopping Features
-- Add products to cart
-- Cart persists across page reloads using localStorage
-- Real-time cart counter in navigation
-- Toast notifications for user actions
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/jerrickhakim/background-agent-testing.git
+    ```
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+3.  **Start the server:**
+    ```bash
+    npm start
+    ```
+4.  **Open your browser** and navigate to `http://localhost:3000`.
 
 ## API Endpoints
 
-- `GET /api/products` - Returns all available products with details
-
-## Product Data
-
-Each product includes:
-- ID
-- Name
-- Price
-- Image URL
-- Category (electronics/accessories)
-- Rating (1-5 stars)
+-   `GET /api/products` - Returns all available products.
 
 ## Technologies Used
 
-- **Backend**: Node.js, Express.js
-- **Frontend**: HTML5, CSS3, Vanilla JavaScript
-- **Storage**: localStorage for cart persistence
-- **API**: RESTful JSON API
+-   **Backend**: Node.js, Express.js
+-   **Frontend**: HTML5, CSS3, Vanilla JavaScript
+-   **Storage**: localStorage for cart persistence
 
-## Browser Compatibility
+## Contributing
 
-Works on all modern browsers including:
-- Chrome/Edge (latest)
-- Firefox (latest)
-- Safari (latest)
-- Mobile browsers
+Contributions are welcome! If you have any ideas, suggestions, or bug fixes, please open an issue or submit a pull request.
 
-## Future Enhancements
-
-- User authentication
-- Order history
-- Product reviews
-- Checkout process
-- Payment integration
-- Advanced search
-- Product details page
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your Changes (`git commit -m '''Add some AmazingFeature'''`)
+4.  Push to the Branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
