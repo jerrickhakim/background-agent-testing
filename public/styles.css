@@ -908,6 +908,322 @@ body {
   text-align: center;
 }
 
+/* Pricing Page */
+.pricing-header {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.pricing-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.pricing-header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.pricing-content {
+  padding: 60px 20px;
+  background-color: #ffffff;
+}
+
+.pricing-toggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.toggle-label input[type="checkbox"] {
+  width: 50px;
+  height: 28px;
+  cursor: pointer;
+  appearance: none;
+  background-color: var(--light-gray);
+  border: 2px solid var(--border-color);
+  border-radius: 14px;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.toggle-label input[type="checkbox"]:checked {
+  background-color: var(--success-color);
+  border-color: var(--success-color);
+}
+
+.toggle-label input[type="checkbox"]::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  transition: left 0.3s;
+}
+
+.toggle-label input[type="checkbox"]:checked::after {
+  left: 20px;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.pricing-card {
+  background: white;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 2rem;
+  position: relative;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-card:hover {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+.pricing-card.featured {
+  border-color: var(--primary-color);
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
+  transform: scale(1.02);
+}
+
+.pricing-card.featured:hover {
+  transform: scale(1.02) translateY(-5px);
+  box-shadow: 0 15px 50px rgba(37, 99, 235, 0.25);
+}
+
+.pricing-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--accent-color);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.pricing-card-header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.plan-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.plan-description {
+  color: #6b7280;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.pricing-card-price {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.currency {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  vertical-align: super;
+}
+
+.amount {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--text-color);
+  transition: all 0.3s;
+}
+
+.period {
+  color: #6b7280;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.pricing-features {
+  list-style: none;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+}
+
+.pricing-features li {
+  padding: 0.75rem 0;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.pricing-features li:last-child {
+  border-bottom: none;
+}
+
+.pricing-features li.unavailable {
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.check-icon {
+  color: var(--success-color);
+  font-weight: bold;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.cross-icon {
+  color: #ef4444;
+  font-weight: bold;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.pricing-btn {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  margin-top: auto;
+}
+
+/* Pricing Comparison Table */
+.pricing-comparison {
+  margin-bottom: 4rem;
+}
+
+.pricing-comparison h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.comparison-table thead {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.comparison-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.comparison-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--light-gray);
+  color: var(--text-color);
+}
+
+.comparison-table tbody tr:hover {
+  background-color: var(--light-gray);
+}
+
+.comparison-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.feature-name {
+  font-weight: 600;
+  color: var(--text-color);
+  background-color: var(--light-gray);
+}
+
+.comparison-table tbody tr:hover .feature-name {
+  background-color: #e5e7eb;
+}
+
+/* Pricing FAQ Section */
+.pricing-faq {
+  margin-top: 4rem;
+}
+
+.pricing-faq h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+}
+
+.pricing-faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.faq-card {
+  background-color: var(--light-gray);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-color);
+  transition: all 0.3s;
+}
+
+.faq-card:hover {
+  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.1);
+  transform: translateY(-3px);
+}
+
+.faq-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.faq-card p {
+  margin: 0;
+  color: #6b7280;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
 /* Responsive Message Page */
 @media (max-width: 768px) {
   .message-wrapper {
@@ -964,6 +1280,32 @@ body {
 
   .contact-form-wrapper {
     height: auto;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-card.featured {
+    transform: scale(1);
+  }
+
+  .pricing-card.featured:hover {
+    transform: translateY(-5px);
+  }
+
+  .pricing-header h1 {
+    font-size: 2rem;
+  }
+
+  .pricing-toggle {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .toggle-label {
+    flex-direction: column;
+    gap: 0.75rem;
   }
 }
 

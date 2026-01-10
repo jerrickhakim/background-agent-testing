@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="View our flexible pricing plans for TechShop subscriptions and services">
+  <title>Pricing Plans - TechShop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <h1>TechShop</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/pricing" class="active">Pricing</a></li>
+        <li><a href="/faqs">FAQs</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      <div class="cart-icon">
+        <span>🛒</span>
+        <span class="cart-count">0</span>
+      </div>
+    </div>
+  </nav>
+
+  <section class="pricing-header">
+    <div class="container">
+      <h1>Our Pricing Plans</h1>
+      <p>Choose the perfect plan for your needs</p>
+    </div>
+  </section>
+
+  <section class="pricing-content">
+    <div class="container">
+      <div class="pricing-toggle">
+        <label class="toggle-label">
+          <input type="checkbox" id="billing-toggle" onchange="toggleBillingPeriod()">
+          <span class="toggle-text">Annual Billing (Save 20%)</span>
+        </label>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Starter Plan -->
+        <div class="pricing-card">
+          <div class="pricing-card-header">
+            <h3 class="plan-name">Starter</h3>
+            <p class="plan-description">Perfect for getting started</p>
+          </div>
+          <div class="pricing-card-price">
+            <span class="currency">$</span>
+            <span class="amount" data-monthly="29" data-annual="290">29</span>
+            <span class="period">/month</span>
+          </div>
+          <ul class="pricing-features">
+            <li><span class="check-icon">✓</span>Up to 5 users</li>
+            <li><span class="check-icon">✓</span>Basic support</li>
+            <li><span class="check-icon">✓</span>10GB storage</li>
+            <li><span class="check-icon">✓</span>Basic analytics</li>
+            <li class="unavailable"><span class="cross-icon">✗</span>Advanced features</li>
+            <li class="unavailable"><span class="cross-icon">✗</span>Priority support</li>
+          </ul>
+          <button class="btn btn-secondary pricing-btn" onclick="selectPlan('Starter')">Get Started</button>
+        </div>
+
+        <!-- Professional Plan -->
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Most Popular</div>
+          <div class="pricing-card-header">
+            <h3 class="plan-name">Professional</h3>
+            <p class="plan-description">Best for growing teams</p>
+          </div>
+          <div class="pricing-card-price">
+            <span class="currency">$</span>
+            <span class="amount" data-monthly="79" data-annual="632">79</span>
+            <span class="period">/month</span>
+          </div>
+          <ul class="pricing-features">
+            <li><span class="check-icon">✓</span>Up to 25 users</li>
+            <li><span class="check-icon">✓</span>Priority support</li>
+            <li><span class="check-icon">✓</span>100GB storage</li>
+            <li><span class="check-icon">✓</span>Advanced analytics</li>
+            <li><span class="check-icon">✓</span>API access</li>
+            <li class="unavailable"><span class="cross-icon">✗</span>Custom integrations</li>
+          </ul>
+          <button class="btn btn-primary pricing-btn" onclick="selectPlan('Professional')">Get Started</button>
+        </div>
+
+        <!-- Enterprise Plan -->
+        <div class="pricing-card">
+          <div class="pricing-card-header">
+            <h3 class="plan-name">Enterprise</h3>
+            <p class="plan-description">For large organizations</p>
+          </div>
+          <div class="pricing-card-price">
+            <span class="currency">$</span>
+            <span class="amount" data-monthly="199" data-annual="1592">199</span>
+            <span class="period">/month</span>
+          </div>
+          <ul class="pricing-features">
+            <li><span class="check-icon">✓</span>Unlimited users</li>
+            <li><span class="check-icon">✓</span>24/7 dedicated support</li>
+            <li><span class="check-icon">✓</span>Unlimited storage</li>
+            <li><span class="check-icon">✓</span>Custom analytics</li>
+            <li><span class="check-icon">✓</span>Advanced API access</li>
+            <li><span class="check-icon">✓</span>Custom integrations</li>
+          </ul>
+          <button class="btn btn-secondary pricing-btn" onclick="selectPlan('Enterprise')">Contact Sales</button>
+        </div>
+      </div>
+
+      <!-- Comparison Table -->
+      <div class="pricing-comparison">
+        <h2>Detailed Feature Comparison</h2>
+        <div class="table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Features</th>
+                <th>Starter</th>
+                <th>Professional</th>
+                <th>Enterprise</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="feature-name">Number of Users</td>
+                <td>Up to 5</td>
+                <td>Up to 25</td>
+                <td>Unlimited</td>
+              </tr>
+              <tr>
+                <td class="feature-name">Storage</td>
+                <td>10GB</td>
+                <td>100GB</td>
+                <td>Unlimited</td>
+              </tr>
+              <tr>
+                <td class="feature-name">Support</td>
+                <td>Email</td>
+                <td>Priority Email & Chat</td>
+                <td>24/7 Dedicated</td>
+              </tr>
+              <tr>
+                <td class="feature-name">Analytics</td>
+                <td>Basic</td>
+                <td>Advanced</td>
+                <td>Custom</td>
+              </tr>
+              <tr>
+                <td class="feature-name">API Access</td>
+                <td>-</td>
+                <td>Yes</td>
+                <td>Advanced</td>
+              </tr>
+              <tr>
+                <td class="feature-name">Custom Integrations</td>
+                <td>-</td>
+                <td>-</td>
+                <td>Yes</td>
+              </tr>
+              <tr>
+                <td class="feature-name">SSO</td>
+                <td>-</td>
+                <td>-</td>
+                <td>Yes</td>
+              </tr>
+              <tr>
+                <td class="feature-name">Custom Branding</td>
+                <td>-</td>
+                <td>-</td>
+                <td>Yes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="pricing-faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="pricing-faq-grid">
+          <div class="faq-card">
+            <h3>Can I change plans anytime?</h3>
+            <p>Yes, you can upgrade or downgrade your plan at any time. Changes will take effect at your next billing cycle.</p>
+          </div>
+          <div class="faq-card">
+            <h3>Is there a free trial?</h3>
+            <p>Absolutely! You can try any plan for 14 days free. No credit card required.</p>
+          </div>
+          <div class="faq-card">
+            <h3>What payment methods do you accept?</h3>
+            <p>We accept all major credit cards, PayPal, and bank transfers for enterprise customers.</p>
+          </div>
+          <div class="faq-card">
+            <h3>Do you offer discounts for annual billing?</h3>
+            <p>Yes! Annual billing comes with a 20% discount compared to monthly billing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 TechShop. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script src="pricing.js"></script>
+</body>
+</html>
