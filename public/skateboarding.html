@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A comprehensive blog article about skateboarding - its history, culture, and tips for beginners">
+  <title>Skateboarding: The Ultimate Guide - TechShop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <h1>TechShop</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/faqs">FAQs</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/skateboarding" class="active">Blog</a></li>
+      </ul>
+      <div class="cart-icon">
+        <span>🛒</span>
+        <span class="cart-count">0</span>
+      </div>
+    </div>
+  </nav>
+
+  <section class="faqs-header">
+    <div class="container">
+      <h1>Skateboarding: The Ultimate Guide</h1>
+      <p>Discover the world of skateboarding - from its origins to mastering the basics</p>
+    </div>
+  </section>
+
+  <section class="faqs-content">
+    <div class="container">
+      <div class="faqs-container">
+        <article class="blog-article">
+          <h2>The History of Skateboarding</h2>
+          <p>Skateboarding originated in the 1950s in California when surfers wanted to "surf" on land. They attached roller skate wheels to wooden boards and began practicing maneuvers on the streets. The sport quickly evolved, with the first commercial skateboards appearing in 1959. The 1970s brought innovations like urethane wheels and the modern skateboard design we know today.</p>
+
+          <h2>Why Skateboarding is More Than Just a Sport</h2>
+          <p>Skateboarding is a lifestyle, a form of self-expression, and a way to push creative boundaries. It's about freedom, creativity, and the pursuit of progression. Whether you're cruising down the street or landing your first trick, skateboarding offers endless opportunities for personal growth and adventure.</p>
+
+          <h2>Essential Gear for Beginners</h2>
+          <p>To get started with skateboarding, you'll need a few key pieces of equipment:</p>
+          <ul>
+            <li><strong>Skateboard:</strong> Choose a complete setup with a sturdy deck, trucks, wheels, and bearings</li>
+            <li><strong>Helmet:</strong> Safety first - always wear protective gear</li>
+            <li><strong>Padding:</strong> Elbow and knee pads are crucial for learning new tricks</li>
+            <li><strong>Comfortable Clothing:</strong> Wear loose-fitting clothes that allow for movement</li>
+          </ul>
+
+          <h2>Basic Tricks to Learn First</h2>
+          <p>Start with the fundamentals before attempting advanced maneuvers:</p>
+          <ol>
+            <li><strong>Ghostride Kickflip:</strong> A classic trick where you flip the board with your back foot</li>
+            <li><strong>Ollie:</strong> The foundation of modern skateboarding - jumping with the board</li>
+            <li><strong>Shuvit:</strong> Spinning the board under your feet while in the air</li>
+            <li><strong>Dance Moves:</strong> Cross-stepping and manuals for style and control</li>
+          </ol>
+
+          <h2>Finding the Right Skate Spot</h2>
+          <p>Location is key for skateboarding. Look for:</p>
+          <ul>
+            <li>Smooth, flat surfaces for dancing and cruising</li>
+            <li>Skate parks with ramps and bowls for tricks</li>
+            <li>Street spots like ledges, rails, and stairs (with permission)</li>
+            <li>Empty parking lots for practicing without traffic</li>
+          </ul>
+
+          <h2>The Skateboarding Community</h2>
+          <p>One of the best aspects of skateboarding is its welcoming community. Skaters are generally friendly and supportive, always ready to share tips or help you learn new tricks. Local skate shops often host events and demos where you can meet fellow enthusiasts and learn from pros.</p>
+
+          <h2>Staying Safe While Skating</h2>
+          <p>Safety should always be your top priority:</p>
+          <ul>
+            <li>Always wear a helmet and pads</li>
+            <li>Check your equipment regularly for wear and tear</li>
+            <li>Skate with friends, especially when trying new spots</li>
+            <li>Respect local laws and property owners</li>
+            <li>Stay hydrated and take breaks to avoid fatigue</li>
+          </ul>
+
+          <h2>The Future of Skateboarding</h2>
+          <p>Skateboarding continues to evolve with new technologies and styles emerging regularly. From electric skateboards to adaptive skating programs, the sport is more accessible than ever. Olympic inclusion in 2020 has brought mainstream attention, inspiring a new generation of skaters worldwide.</p>
+
+          <p>Whether you're 8 or 80, skateboarding offers something for everyone. It's never too late to start, and the journey of learning and progression is what makes it so rewarding. Grab a board, hit the streets, and discover the thrill of skateboarding for yourself!</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 TechShop. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Update cart count on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartCount = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+      document.querySelector('.cart-count').textContent = cartCount;
+    });
+  </script>
+</body>
+</html>
