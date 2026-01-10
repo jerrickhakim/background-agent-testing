@@ -674,6 +674,46 @@ body {
   }
 }
 
+/* Story Page */
+.story-header {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.story-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.story-header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.story-content {
+  padding: 60px 20px;
+  background-color: #ffffff;
+}
+
+.story-content .container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.story-text h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.story-text p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  color: var(--text-color);
+}
+
 /* Footer */
 .footer {
   background-color: var(--text-color);
@@ -697,17 +737,7 @@ body {
 }
 
 .message-header p {
-  font-size: 1.1rem;
-  opacity: 0.9;
-}
-
-.message-content {
-  padding: 40px 20px;
-  background-color: #ffffff;
-  min-height: 600px;
-}
-
-.message-wrapper {
+.form-success-box {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n  background-color: #d1fae5;\n  border: 2px solid var(--success-color);\n  border-radius: 8px;\n  padding: 1.5rem;\n  margin-top: 1rem;\n  animation: slideUp 0.4s ease-out;\n}\n\n.success-icon {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 40px;\n  height: 40px;\n  background-color: var(--success-color);\n  color: white;\n  border-radius: 50%;\n  font-size: 1.5rem;\n  font-weight: bold;\n  flex-shrink: 0;\n}\n\n.success-content {\n  flex: 1;\n}\n\n.success-title {\n  margin: 0 0 0.25rem 0;\n  font-weight: 600;\n  color: #065f46;\n  font-size: 1rem;\n}\n\n.success-message {\n  margin: 0;\n  color: #047857;\n  font-size: 0.95rem;\n}\n\n@keyframes slideUp {\n  from {\n    opacity: 0;\n    transform: translateY(10px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n\n/* Story Page */\n.story-header {\n  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);\n  color: white;\n  padding: 40px 20px;\n  text-align: center;\n}\n\n.story-header h1 {\n  font-size: 2.5rem;\n  margin-bottom: 0.5rem;\n}\n\n.story-header p {\n  font-size: 1.1rem;\n  opacity: 0.9;\n}\n\n.story-content {\n  padding: 60px 20px;\n  background-color: #ffffff;\n}\n\n.story-content .container {\n  max-width: 800px;\n  margin: 0 auto;\n}\n\n.story-text h2 {\n  font-size: 1.8rem;\n  margin-bottom: 1rem;\n  color: var(--text-color);\n}\n\n.story-text p {\n  margin-bottom: 1.5rem;\n  line-height: 1.8;\n  color: var(--text-color);\n}\n\n/* Footer */\n.footer {\n  background-color: var(--text-color);\n  color: white;\n  text-align: center;\n  padding: 2rem;\n  margin-top: auto;\n}
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
